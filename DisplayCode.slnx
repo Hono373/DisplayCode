@@ -1,0 +1,7 @@
+﻿<Solution>
+  <Project Path="Sirenix.OdinInspector.CompatibilityLayer.csproj" />
+  <Project Path="Sirenix.OdinInspector.CompatibilityLayer.Editor.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="My.CodeLibrary.csproj" />
+  <Project Path="Assembly-CSharp-Editor.csproj" />
+</Solution>
