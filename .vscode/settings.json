@@ -56,5 +56,6 @@
         "temp/": true,
         "Temp/": true
     },
-    "dotnet.defaultSolution": "DisplayCode.slnx"
+    "dotnet.defaultSolution": "DisplayCode.slnx",
+    "dotnet.preferCSharpExtension": true
 }
