@@ -11,7 +11,7 @@ public class AssetLoad
     static ResourcePackage Package;
     public static IEnumerator Create()
     {
-        var packetName = "YooAsset";
+        var packetName = "DefaultPackage";
         YooAssets.Initialize();
         Package = YooAssets.CreatePackage(packetName);
         YooAssets.SetDefaultPackage(Package);

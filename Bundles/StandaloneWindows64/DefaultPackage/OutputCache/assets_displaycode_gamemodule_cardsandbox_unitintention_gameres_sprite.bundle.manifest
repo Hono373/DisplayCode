@@ -1,0 +1,29 @@
+ManifestFileVersion: 0
+CRC: 1608433858
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 7e8fbd128e9ba9e8619019f1949a4cab
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 2d8df09e698f722ada1caa03d3413830
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 7e8fbd128e9ba9e8619019f1949a4cab
+HashAppended: 0
+ClassTypes:
+- Class: 28
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Debuff.png
+- Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Attack_intent_1.png
+- Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Sleep.png
+- Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Block.png
+- Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Buff.png
+- Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Icon_Intention_Heal.png
+- Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Unknown.png
+- Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Escape.png
+Dependencies: []

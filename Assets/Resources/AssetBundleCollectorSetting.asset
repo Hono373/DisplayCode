@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 185f6993d5150494d98da50e26cb1c25, type: 3}
-  m_Name: BundleCollectorSetting
+  m_Name: AssetBundleCollectorSetting
   m_EditorClassIdentifier: 
   ShowPackageView: 0
-  ShowEditorAlias: 1
+  ShowEditorAlias: 0
   UniqueBundleName: 0
   Packages:
-  - PackageName: YooAsset
+  - PackageName: DefaultPackage
     PackageDesc: 
     EnableAddressable: 1
     LocationToLower: 0
@@ -29,16 +29,16 @@ MonoBehaviour:
       AssetTags: 
       ActiveRuleName: EnableGroup
       Collectors:
-      - CollectPath: Assets/GameRes
-        CollectorGUID: 48177bef8b47d5e48bcb37b87005915f
+      - CollectPath: Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes
+        CollectorGUID: ef676cbb7ecbec947b80389fc28ea5fd
         CollectorType: 0
         AddressRuleName: AddressByFileName
         PackRuleName: PackDirectory
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 
-      - CollectPath: Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes
-        CollectorGUID: ef676cbb7ecbec947b80389fc28ea5fd
+      - CollectPath: Assets/GameRes
+        CollectorGUID: 48177bef8b47d5e48bcb37b87005915f
         CollectorType: 0
         AddressRuleName: AddressByFileName
         PackRuleName: PackDirectory

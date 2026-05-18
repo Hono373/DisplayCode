@@ -243,15 +243,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f09a8bc307bca4d439217d5639d57234, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  intentionInfo:
-    conditionBox:
-      rid: -2
-    statusInfos: []
-  references:
-    version: 2
-    RefIds:
-    - rid: -2
-      type: {class: , ns: , asm: }
+  unitMockInfo: {fileID: 11400000, guid: b34b4265dffddff4b85b747ba8044f20, type: 2}
 --- !u!4 &1933085399
 Transform:
   m_ObjectHideFlags: 0

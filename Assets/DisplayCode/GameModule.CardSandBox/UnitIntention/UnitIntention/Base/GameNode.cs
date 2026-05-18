@@ -10,10 +10,10 @@ public abstract class GameNode
     public virtual bool IsEnd() => false;
     public abstract IReadOnlyList<IWeight> Weights();
     public abstract IReadOnlyList<GameNode> Childs();
-    [SerializeReference] ConditionBox conditionBox = new();
+    public abstract ConditionBox ConditionBox();
     public int GetChildIndex()
     {
-        var result = conditionBox.Result();
+        var result = ConditionBox().Result();
         if (!result.HasValue)
         {
             var weights = Weights();

@@ -1,0 +1,118 @@
+{
+    "FileVersion": "2.0.0",
+    "EnableAddressable": true,
+    "LocationToLower": false,
+    "IncludeAssetGUID": false,
+    "OutputNameStyle": 0,
+    "BuildPipeline": "BuiltinBuildPipeline",
+    "PackageName": "DefaultPackage",
+    "PackageVersion": "Simulate",
+    "AssetList": [
+        {
+            "Address": "BattleIconInfo",
+            "AssetPath": "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/BattleIconInfo.asset",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 0
+        },
+        {
+            "Address": "NullEffectInfo",
+            "AssetPath": "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/NullEffectInfo.asset",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 0
+        },
+        {
+            "Address": "NullSkillInfo",
+            "AssetPath": "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/NullSkillInfo.asset",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 0
+        },
+        {
+            "Address": "UnitMockInfo",
+            "AssetPath": "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/UnitMockInfo.asset",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 0
+        },
+        {
+            "Address": "Attack_intent_1",
+            "AssetPath": "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Attack_intent_1.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1
+        },
+        {
+            "Address": "Block",
+            "AssetPath": "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Block.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1
+        },
+        {
+            "Address": "Buff",
+            "AssetPath": "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Buff.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1
+        },
+        {
+            "Address": "Debuff",
+            "AssetPath": "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Debuff.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1
+        },
+        {
+            "Address": "Escape",
+            "AssetPath": "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Escape.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1
+        },
+        {
+            "Address": "Icon_Intention_Heal",
+            "AssetPath": "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Icon_Intention_Heal.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1
+        },
+        {
+            "Address": "Sleep",
+            "AssetPath": "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Sleep.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1
+        },
+        {
+            "Address": "Unknown",
+            "AssetPath": "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Unknown.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1
+        }
+    ],
+    "BundleList": [
+        {
+            "BundleName": "assets_displaycode_gamemodule_cardsandbox_unitintention_gameres.bundle",
+            "UnityCRC": 0,
+            "FileHash": "f42cfe103017216ffe1587932f01a54b",
+            "FileCRC": "00000000",
+            "FileSize": 4624,
+            "Encrypted": false,
+            "Tags": [],
+            "DependIDs": []
+        },
+        {
+            "BundleName": "assets_displaycode_gamemodule_cardsandbox_unitintention_gameres_sprite.bundle",
+            "UnityCRC": 0,
+            "FileHash": "9a55f504433b37e963059c46a6952d92",
+            "FileCRC": "00000000",
+            "FileSize": 29015,
+            "Encrypted": false,
+            "Tags": [],
+            "DependIDs": []
+        }
+    ]
+}

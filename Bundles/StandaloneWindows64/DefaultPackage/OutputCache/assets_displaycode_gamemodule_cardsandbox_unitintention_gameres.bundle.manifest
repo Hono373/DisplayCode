@@ -1,0 +1,46 @@
+ManifestFileVersion: 0
+CRC: 2672407692
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: dd8a7efc4318507da0068a21415de0ad
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: f8b806dea507cabcc277dcfbbf38b18b
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: dd8a7efc4318507da0068a21415de0ad
+HashAppended: 0
+ClassTypes:
+- Class: 114
+  Script: {fileID: 11500000, guid: 3b31fe9852b749941bfe0b5854d9bccb, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 389dc48b7ce798e45bf04231131b8570, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 15946b1eee8f1034c8651b4a22e01731, type: 3}
+- Class: 114
+  Script: {fileID: 11500000, guid: 57faf6f91851cbb4b9dff1d17ac8804f, type: 3}
+- Class: 115
+  Script: {instanceID: 0}
+- Class: 213
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: GameModule.CardSandBox.UnitIntention
+  ClassName: ConditionBox
+- AssemblyName: GameModule.CardSandBox.UnitIntention
+  ClassName: GameConditionExample
+- AssemblyName: GameModule.CardSandBox.UnitIntention
+  ClassName: SelectorBox
+- AssemblyName: GameModule.CardSandBox.UnitIntention
+  ClassName: SkillInfo
+- AssemblyName: GameModule.CardSandBox.UnitIntention
+  ClassName: StatusInfo
+- AssemblyName: GameModule.CardSandBox.UnitIntention
+  ClassName: UnitIntentionInfo
+Assets:
+- Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/UnitMockInfo.asset
+- Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/BattleIconInfo.asset
+- Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/NullEffectInfo.asset
+- Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/NullSkillInfo.asset
+Dependencies:
+- C:/Work/DisplayCode/Bundles/StandaloneWindows64/DefaultPackage/OutputCache/assets_displaycode_gamemodule_cardsandbox_unitintention_gameres_sprite.bundle

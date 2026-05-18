@@ -22,9 +22,9 @@ public class UnitIntention
         {
             GameNode node = info;
             var i = 0;
-            while (!info.IsEnd())
+            while (!node.IsEnd())
             {
-                var childIndex = info.GetChildIndex();
+                var childIndex = node.GetChildIndex();
                 indexs[i] = childIndex;
                 node = node.Childs()[childIndex];
                 i++;

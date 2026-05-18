@@ -6,10 +6,12 @@ using UnityEngine;
 [Serializable]
 public class UnitIntentionInfo : GameNode
 {
+    [SerializeField] ConditionBox conditionBox = new();
     [SerializeReference] List<StatusInfo> statusInfos = new();
     public IReadOnlyList<StatusInfo> StatusInfos() => statusInfos;
     public override IReadOnlyList<IWeight> Weights() => statusInfos;
     public override IReadOnlyList<GameNode> Childs() => statusInfos;
+    public override ConditionBox ConditionBox() => conditionBox;
     public ISkillInfo Deserialize(IntentionData skillData)
     {
         try

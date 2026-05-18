@@ -12,9 +12,11 @@ public class StatusInfo : GameNode, IWeight
 {
     [SerializeField] string name;
     [SerializeField][MinValue(1)] int weight = 1;
+    [SerializeField] ConditionBox conditionBox = new();
     [SerializeReference] List<SkillInfo> skillInfos = new();
     public override IReadOnlyList<IWeight> Weights() => skillInfos;
     public override IReadOnlyList<GameNode> Childs() => skillInfos;
+    public override ConditionBox ConditionBox() => conditionBox;
     public SkillInfo Deserialize(int index) => skillInfos[index];
     public int Weight() => weight;
 }

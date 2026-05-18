@@ -7,14 +7,20 @@ using UnityEngine;
 [Serializable]
 public class SkillEffectInfo : ISkillEffectInfo
 {
+    [SerializeField] string desc;
     [SerializeReference] IEffectInfo effectInfo;
     public IEffectInfo EffectInfo() => effectInfo;
     public IntentionUIData IntentionsData()
     {
         return IntentionUIData.Create(effectInfo.EffectType(), effectInfo.GetValue());
     }
-    internal List<IUnit> GetTargetList(IUnit self)
+    public string Desc()
     {
-        throw new NotImplementedException();
+        var result = effectInfo.GetValue();
+        if (result.HasValue)
+        {
+            return string.Format(desc, result.Value);
+        }
+        return desc;
     }
 }

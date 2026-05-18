@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   intentionInfo:
     conditionBox:
-      rid: -2
+      rules: []
     statusInfos:
     - rid: 2671306780715253760
   references:
@@ -25,57 +25,45 @@ MonoBehaviour:
     - rid: 2671306780715253760
       type: {class: StatusInfo, ns: , asm: GameModule.CardSandBox.UnitIntention}
       data:
-        conditionBox:
-          rid: 2671306780715253764
-        name: 
+        name: idle
         weight: 1
+        conditionBox:
+          rules:
+          - rid: 2671306789693161475
         skillInfos:
         - rid: 2671306780715253761
         - rid: 2671306780715253763
     - rid: 2671306780715253761
       type: {class: SkillInfo, ns: , asm: GameModule.CardSandBox.UnitIntention}
       data:
-        conditionBox:
-          rid: 2671306780715253766
         name: "\u65CB\u98CE\u65A9"
         weight: 1
         selectorBox:
           selector: []
-        effectGroupInfo: []
+        skillEffectInfo:
+        - rid: 2671306789693161476
     - rid: 2671306780715253763
       type: {class: SkillInfo, ns: , asm: GameModule.CardSandBox.UnitIntention}
       data:
-        conditionBox:
-          rid: 2671306780715253768
         name: "\u706B\u7403\u672F"
-        weight: 3
+        weight: 1
         selectorBox:
           selector: []
-        effectGroupInfo: []
-    - rid: 2671306780715253764
-      type: {class: ConditionBox, ns: , asm: GameModule.CardSandBox.UnitIntention}
-      data:
-        rules:
-        - rid: 2671306780715253765
-    - rid: 2671306780715253765
+        skillEffectInfo:
+        - rid: 2671306789693161477
+    - rid: 2671306789693161475
       type: {class: GameConditionExample, ns: , asm: GameModule.CardSandBox.UnitIntention}
       data:
         index: 0
-    - rid: 2671306780715253766
-      type: {class: ConditionBox, ns: , asm: GameModule.CardSandBox.UnitIntention}
+    - rid: 2671306789693161476
+      type: {class: SkillEffectInfo, ns: , asm: GameModule.CardSandBox.UnitIntention}
       data:
-        rules:
-        - rid: 2671306780715253767
-    - rid: 2671306780715253767
-      type: {class: GameConditionExample, ns: , asm: GameModule.CardSandBox.UnitIntention}
+        desc: "\u5BF9\u6240\u6709\u4EBA\u9020\u6210{0}\u4F24\u5BB3"
+        effectInfo:
+          rid: -2
+    - rid: 2671306789693161477
+      type: {class: SkillEffectInfo, ns: , asm: GameModule.CardSandBox.UnitIntention}
       data:
-        index: 0
-    - rid: 2671306780715253768
-      type: {class: ConditionBox, ns: , asm: GameModule.CardSandBox.UnitIntention}
-      data:
-        rules:
-        - rid: 2671306780715253769
-    - rid: 2671306780715253769
-      type: {class: GameConditionExample, ns: , asm: GameModule.CardSandBox.UnitIntention}
-      data:
-        index: 1
+        desc: "\u9020\u6210{0}\u4F24\u5BB3"
+        effectInfo:
+          rid: -2

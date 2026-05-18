@@ -1,0 +1,16 @@
+{
+    "name": "AnimProcessSystem",
+    "rootNamespace": "AnimProcessSystem",
+    "references": [
+        "DG.Tweening"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}
