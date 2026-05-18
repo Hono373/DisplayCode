@@ -1,0 +1,91 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4ba36da5167ac7144afce1a41598eef2, type: 3}
+  m_Name: tttt
+  m_EditorClassIdentifier: 
+  startInfo:
+    parent: {fileID: 11400000}
+    inPort:
+      guid: 
+    pos: {x: 200, y: -60}
+    outPort:
+      guid: 141038a9-a39c-4e20-96ba-24f8b6afcac7
+      nextGuids: []
+    title: 
+    describe: 
+    background: {fileID: 0}
+    bgm: {fileID: 0}
+  list:
+  - rid: 1535549771605606400
+  - rid: 1535549771605606401
+  - rid: 1535549771605606402
+  - rid: 1535549771605606403
+  references:
+    version: 2
+    RefIds:
+    - rid: 1535549771605606400
+      type: {class: DialogueInfo, ns: , asm: GameModule.StoryLinker.Runtime}
+      data:
+        parent: {fileID: 11400000}
+        inPort:
+          guid: 433854e3-8f80-42b0-9c7d-38783c4b00a8
+        pos: {x: 459, y: 400}
+        outPort:
+          guid: 781c09f8-7563-40b3-89b6-3d84e4c939d4
+          nextGuids: []
+        conditions: []
+        anims: []
+        speaker:
+          cn: 
+          en: 
+          jp: 
+        text:
+          cn: 
+          en: 
+          jp: 
+    - rid: 1535549771605606401
+      type: {class: OptionInfo, ns: , asm: GameModule.StoryLinker.Runtime}
+      data:
+        parent: {fileID: 11400000}
+        inPort:
+          guid: 898c8b3d-6222-4332-b25c-e6b8b08cb276
+        pos: {x: 520, y: 22}
+        outPort:
+          guid: a737d306-9406-48a8-a8a2-cad2b5863f03
+          nextGuids: []
+        needCondition: 0
+        conditions: []
+        text:
+          cn: 
+          en: 
+          jp: 
+    - rid: 1535549771605606402
+      type: {class: EndInfo, ns: , asm: GameModule.StoryLinker.Runtime}
+      data:
+        parent: {fileID: 11400000}
+        inPort:
+          guid: c11a4eb5-d269-4a33-8e5c-9c0b0b6a79b8
+        pos: {x: 958, y: -55}
+        outPort:
+          guid: 
+          nextGuids: []
+    - rid: 1535549771605606403
+      type: {class: NoteInfo, ns: , asm: GameModule.StoryLinker.Runtime}
+      data:
+        parent: {fileID: 11400000}
+        inPort:
+          guid: bd509ebd-54f2-4ad2-b162-f2ceb2f5af7a
+        pos: {x: 200, y: 400}
+        outPort:
+          guid: 34e35476-1606-4c09-879c-dff209219f93
+          nextGuids: []
+        describe: 

@@ -1,0 +1,19 @@
+ManifestFileVersion: 0
+CRC: 2498820494
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 7e38c539009820efcbbcb042917cb2c0
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 31d6cfe0d16ae931b73c59d7e0c089c0
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 7e38c539009820efcbbcb042917cb2c0
+HashAppended: 0
+ClassTypes: []
+SerializeReferenceClassIdentifiers: []
+Assets:
+- Assets/DisplayCode/GameModule.CardSandBox/Like.StoryCreator/GameRes/EditorConfig.asset
+Dependencies:
+- C:/UnityWork/DisplayCode/Bundles/StandaloneWindows64/DefaultPackage/OutputCache/share_assets_displaycode_gamemodule_cardsandbox_like_storycreator.bundle

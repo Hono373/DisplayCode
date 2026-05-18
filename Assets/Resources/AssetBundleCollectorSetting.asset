@@ -45,3 +45,11 @@ MonoBehaviour:
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 
+      - CollectPath: Assets/DisplayCode/GameModule.CardSandBox/Like.StoryCreator/GameRes
+        CollectorGUID: 4a86769c9a928464a9ba294b3af1d8bd
+        CollectorType: 0
+        AddressRuleName: AddressByFileName
+        PackRuleName: PackDirectory
+        FilterRuleName: CollectAll
+        AssetTags: 
+        UserData: 

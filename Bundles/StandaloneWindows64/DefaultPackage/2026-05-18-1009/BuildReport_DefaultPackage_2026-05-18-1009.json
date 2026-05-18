@@ -1,0 +1,229 @@
+{
+    "Summary": {
+        "YooVersion": "2.1.2",
+        "UnityVersion": "2022.3.62f2c1",
+        "BuildDate": "2026/5/18 16:49:40",
+        "BuildSeconds": 13,
+        "BuildTarget": 19,
+        "BuildMode": 0,
+        "BuildPipeline": "BuiltinBuildPipeline",
+        "BuildPackageName": "DefaultPackage",
+        "BuildPackageVersion": "2026-05-18-1009",
+        "UniqueBundleName": false,
+        "EnableAddressable": true,
+        "LocationToLower": false,
+        "IncludeAssetGUID": false,
+        "AutoCollectShaders": true,
+        "IgnoreRuleName": "YooAsset.Editor.NormalIgnoreRule",
+        "EnableSharePackRule": true,
+        "EncryptionClassName": "null",
+        "FileNameStyle": 0,
+        "CompressOption": 2,
+        "DisableWriteTypeTree": false,
+        "IgnoreTypeTreeChanges": true,
+        "AssetFileTotalCount": 14,
+        "MainAssetTotalCount": 13,
+        "AllBundleTotalCount": 4,
+        "AllBundleTotalSize": 32680,
+        "EncryptedBundleTotalCount": 0,
+        "EncryptedBundleTotalSize": 0
+    },
+    "AssetInfos": [
+        {
+            "Address": "BattleIconInfo",
+            "AssetPath": "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/BattleIconInfo.asset",
+            "AssetGUID": "635b74d8cca8d1b468a418f9a443401d",
+            "AssetTags": [],
+            "MainBundleName": "assets_displaycode_gamemodule_cardsandbox_unitintention_gameres.bundle",
+            "MainBundleSize": 4415,
+            "DependAssets": [
+                "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Debuff.png",
+                "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Attack_intent_1.png",
+                "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Sleep.png",
+                "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Block.png",
+                "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Buff.png",
+                "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Icon_Intention_Heal.png",
+                "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Unknown.png"
+            ]
+        },
+        {
+            "Address": "NullEffectInfo",
+            "AssetPath": "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/NullEffectInfo.asset",
+            "AssetGUID": "894406934216e564895faf8e6746f26d",
+            "AssetTags": [],
+            "MainBundleName": "assets_displaycode_gamemodule_cardsandbox_unitintention_gameres.bundle",
+            "MainBundleSize": 4415,
+            "DependAssets": []
+        },
+        {
+            "Address": "NullSkillInfo",
+            "AssetPath": "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/NullSkillInfo.asset",
+            "AssetGUID": "b58352dc0b0465e4f8284347bc349e78",
+            "AssetTags": [],
+            "MainBundleName": "assets_displaycode_gamemodule_cardsandbox_unitintention_gameres.bundle",
+            "MainBundleSize": 4415,
+            "DependAssets": []
+        },
+        {
+            "Address": "UnitMockInfo",
+            "AssetPath": "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/UnitMockInfo.asset",
+            "AssetGUID": "b34b4265dffddff4b85b747ba8044f20",
+            "AssetTags": [],
+            "MainBundleName": "assets_displaycode_gamemodule_cardsandbox_unitintention_gameres.bundle",
+            "MainBundleSize": 4415,
+            "DependAssets": []
+        },
+        {
+            "Address": "Attack_intent_1",
+            "AssetPath": "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Attack_intent_1.png",
+            "AssetGUID": "c45ce899514c5464d8a563f47856ec60",
+            "AssetTags": [],
+            "MainBundleName": "assets_displaycode_gamemodule_cardsandbox_unitintention_gameres_sprite.bundle",
+            "MainBundleSize": 24397,
+            "DependAssets": []
+        },
+        {
+            "Address": "Block",
+            "AssetPath": "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Block.png",
+            "AssetGUID": "cd711069c532d3d41ae97f49f1cbec43",
+            "AssetTags": [],
+            "MainBundleName": "assets_displaycode_gamemodule_cardsandbox_unitintention_gameres_sprite.bundle",
+            "MainBundleSize": 24397,
+            "DependAssets": []
+        },
+        {
+            "Address": "Buff",
+            "AssetPath": "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Buff.png",
+            "AssetGUID": "e79d5757de5ca2644bd6a7214b4dd095",
+            "AssetTags": [],
+            "MainBundleName": "assets_displaycode_gamemodule_cardsandbox_unitintention_gameres_sprite.bundle",
+            "MainBundleSize": 24397,
+            "DependAssets": []
+        },
+        {
+            "Address": "Debuff",
+            "AssetPath": "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Debuff.png",
+            "AssetGUID": "97abc9bf31b0c6742888f21d48833eeb",
+            "AssetTags": [],
+            "MainBundleName": "assets_displaycode_gamemodule_cardsandbox_unitintention_gameres_sprite.bundle",
+            "MainBundleSize": 24397,
+            "DependAssets": []
+        },
+        {
+            "Address": "Escape",
+            "AssetPath": "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Escape.png",
+            "AssetGUID": "46bdd79e8e376be41bc0c9a0b53c8e76",
+            "AssetTags": [],
+            "MainBundleName": "assets_displaycode_gamemodule_cardsandbox_unitintention_gameres_sprite.bundle",
+            "MainBundleSize": 24397,
+            "DependAssets": []
+        },
+        {
+            "Address": "Icon_Intention_Heal",
+            "AssetPath": "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Icon_Intention_Heal.png",
+            "AssetGUID": "b7ead0aeb5c616a43a0633959e816b68",
+            "AssetTags": [],
+            "MainBundleName": "assets_displaycode_gamemodule_cardsandbox_unitintention_gameres_sprite.bundle",
+            "MainBundleSize": 24397,
+            "DependAssets": []
+        },
+        {
+            "Address": "Sleep",
+            "AssetPath": "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Sleep.png",
+            "AssetGUID": "12084396dba7ae24399633e64d79344b",
+            "AssetTags": [],
+            "MainBundleName": "assets_displaycode_gamemodule_cardsandbox_unitintention_gameres_sprite.bundle",
+            "MainBundleSize": 24397,
+            "DependAssets": []
+        },
+        {
+            "Address": "Unknown",
+            "AssetPath": "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Unknown.png",
+            "AssetGUID": "79573b7487062194f8cd64ec69f061a1",
+            "AssetTags": [],
+            "MainBundleName": "assets_displaycode_gamemodule_cardsandbox_unitintention_gameres_sprite.bundle",
+            "MainBundleSize": 24397,
+            "DependAssets": []
+        },
+        {
+            "Address": "EditorConfig",
+            "AssetPath": "Assets/DisplayCode/GameModule.CardSandBox/Like.StoryCreator/GameRes/EditorConfig.asset",
+            "AssetGUID": "ddb5f1884d91af643b31a43774e391ab",
+            "AssetTags": [],
+            "MainBundleName": "assets_displaycode_gamemodule_cardsandbox_like_storycreator_gameres.bundle",
+            "MainBundleSize": 1095,
+            "DependAssets": [
+                "Assets/DisplayCode/GameModule.CardSandBox/Like.StoryCreator/BackgroundGrid.uss"
+            ]
+        }
+    ],
+    "BundleInfos": [
+        {
+            "BundleName": "assets_displaycode_gamemodule_cardsandbox_unitintention_gameres.bundle",
+            "FileName": "ab7cefe68d2bff2b0ab8d23765c50f24.bundle",
+            "FileHash": "ab7cefe68d2bff2b0ab8d23765c50f24",
+            "FileCRC": "bcec87c8",
+            "FileSize": 4415,
+            "Encrypted": false,
+            "Tags": [],
+            "DependBundles": [
+                "assets_displaycode_gamemodule_cardsandbox_unitintention_gameres_sprite.bundle"
+            ],
+            "AllBuiltinAssets": [
+                "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/BattleIconInfo.asset",
+                "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/NullEffectInfo.asset",
+                "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/NullSkillInfo.asset",
+                "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/UnitMockInfo.asset"
+            ]
+        },
+        {
+            "BundleName": "assets_displaycode_gamemodule_cardsandbox_unitintention_gameres_sprite.bundle",
+            "FileName": "788ede68b6499706684608ae08848584.bundle",
+            "FileHash": "788ede68b6499706684608ae08848584",
+            "FileCRC": "154ffce8",
+            "FileSize": 24397,
+            "Encrypted": false,
+            "Tags": [],
+            "DependBundles": [],
+            "AllBuiltinAssets": [
+                "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Attack_intent_1.png",
+                "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Block.png",
+                "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Buff.png",
+                "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Debuff.png",
+                "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Escape.png",
+                "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Icon_Intention_Heal.png",
+                "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Sleep.png",
+                "Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes/Sprite/Unknown.png"
+            ]
+        },
+        {
+            "BundleName": "assets_displaycode_gamemodule_cardsandbox_like_storycreator_gameres.bundle",
+            "FileName": "0a2938473eafcfa133834221ff4300d1.bundle",
+            "FileHash": "0a2938473eafcfa133834221ff4300d1",
+            "FileCRC": "608af1e9",
+            "FileSize": 1095,
+            "Encrypted": false,
+            "Tags": [],
+            "DependBundles": [
+                "share_assets_displaycode_gamemodule_cardsandbox_like_storycreator.bundle"
+            ],
+            "AllBuiltinAssets": [
+                "Assets/DisplayCode/GameModule.CardSandBox/Like.StoryCreator/GameRes/EditorConfig.asset"
+            ]
+        },
+        {
+            "BundleName": "share_assets_displaycode_gamemodule_cardsandbox_like_storycreator.bundle",
+            "FileName": "501a5274c595b000f970e3a14047df3f.bundle",
+            "FileHash": "501a5274c595b000f970e3a14047df3f",
+            "FileCRC": "888c7fd9",
+            "FileSize": 2773,
+            "Encrypted": false,
+            "Tags": [],
+            "DependBundles": [],
+            "AllBuiltinAssets": [
+                "Assets/DisplayCode/GameModule.CardSandBox/Like.StoryCreator/BackgroundGrid.uss"
+            ]
+        }
+    ],
+    "IndependAssets": []
+}

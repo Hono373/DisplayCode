@@ -1,0 +1,34 @@
+ManifestFileVersion: 0
+CRC: 3506715708
+Hashes:
+  AssetFileHash:
+    serializedVersion: 2
+    Hash: 4ad6da710ed7ae667967e019dc66639f
+  TypeTreeHash:
+    serializedVersion: 2
+    Hash: 13fe774d35d5307a2a2badfe979dd6df
+  IncrementalBuildHash:
+    serializedVersion: 2
+    Hash: 4ad6da710ed7ae667967e019dc66639f
+HashAppended: 0
+ClassTypes:
+- Class: 114
+  Script: {fileID: 11998, guid: 0000000000000000e000000000000000, type: 0}
+- Class: 115
+  Script: {instanceID: 0}
+SerializeReferenceClassIdentifiers:
+- AssemblyName: UnityEngine.UIElementsModule
+  ClassName: UnityEngine.UIElements.StyleComplexSelector
+- AssemblyName: UnityEngine.UIElementsModule
+  ClassName: UnityEngine.UIElements.StyleProperty
+- AssemblyName: UnityEngine.UIElementsModule
+  ClassName: UnityEngine.UIElements.StyleRule
+- AssemblyName: UnityEngine.UIElementsModule
+  ClassName: UnityEngine.UIElements.StyleSelector
+- AssemblyName: UnityEngine.UIElementsModule
+  ClassName: UnityEngine.UIElements.StyleSelectorPart
+- AssemblyName: UnityEngine.UIElementsModule
+  ClassName: UnityEngine.UIElements.StyleValueHandle
+Assets:
+- Assets/DisplayCode/GameModule.CardSandBox/Like.StoryCreator/BackgroundGrid.uss
+Dependencies: []

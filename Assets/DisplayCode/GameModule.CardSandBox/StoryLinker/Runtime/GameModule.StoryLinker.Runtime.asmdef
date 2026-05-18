@@ -1,0 +1,16 @@
+{
+    "name": "GameModule.StoryLinker.Runtime",
+    "rootNamespace": "",
+    "references": [
+        "GUID:b61e00cde86dbb5489c57defa0e48187"
+    ],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

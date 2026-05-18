@@ -91,15 +91,22 @@
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 1
+        },
+        {
+            "Address": "EditorConfig",
+            "AssetPath": "Assets/DisplayCode/GameModule.CardSandBox/Like.StoryCreator/GameRes/EditorConfig.asset",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2
         }
     ],
     "BundleList": [
         {
             "BundleName": "assets_displaycode_gamemodule_cardsandbox_unitintention_gameres.bundle",
             "UnityCRC": 0,
-            "FileHash": "f42cfe103017216ffe1587932f01a54b",
+            "FileHash": "10b9cb820b8eac44e671d2e90445b158",
             "FileCRC": "00000000",
-            "FileSize": 4624,
+            "FileSize": 4234,
             "Encrypted": false,
             "Tags": [],
             "DependIDs": []
@@ -107,9 +114,19 @@
         {
             "BundleName": "assets_displaycode_gamemodule_cardsandbox_unitintention_gameres_sprite.bundle",
             "UnityCRC": 0,
-            "FileHash": "9a55f504433b37e963059c46a6952d92",
+            "FileHash": "0168dcfd5d1154d2c61cf0a1f37ef37e",
             "FileCRC": "00000000",
             "FileSize": 29015,
+            "Encrypted": false,
+            "Tags": [],
+            "DependIDs": []
+        },
+        {
+            "BundleName": "assets_displaycode_gamemodule_cardsandbox_like_storycreator_gameres.bundle",
+            "UnityCRC": 0,
+            "FileHash": "62995d15157c576983f52ed7acd9fd85",
+            "FileCRC": "00000000",
+            "FileSize": 613,
             "Encrypted": false,
             "Tags": [],
             "DependIDs": []
