@@ -79,9 +79,6 @@ public class StoryInfo : ScriptableObject
         AssetDatabase.SaveAssetIfDirty(this);
 #endif
     }
-    
-    void Reset() => Init();
-    
     /// <summary>
     /// 【建议】guidHash 未序列化，重构后应去掉。直接 Guid.NewGuid() 即可。
     /// </summary>

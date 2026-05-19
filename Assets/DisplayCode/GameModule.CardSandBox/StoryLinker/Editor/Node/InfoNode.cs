@@ -10,13 +10,9 @@ using static UnityEditor.Experimental.GraphView.Port;
 public class InfoNode : Node
 {
     public BaseInfo info = null;
-    
-    /// <summary>
-    /// 【建议】使用 GetPosition() 替代 layout，避免拖拽时位置滞后
-    ///   public Vector2 Pos => GetPosition().position;
-    /// </summary>
-    public Vector2 Pos { get => new((int)layout.x, (int)layout.y); }
-    
+
+    public Vector2 Pos { get => Vector2Int.CeilToInt(GetPosition().position); }
+
     /// <summary>
     /// 由 Odin 创建的属性树，负责解析 data 类的字段并管理 GUI 生命周期
     /// </summary>
@@ -25,7 +21,7 @@ public class InfoNode : Node
     /// 缓存的属性值变化回调委托，用于在释放时精确移除事件订阅
     /// </summary>
     private PropertyTree.OnPropertyValueChangedDelegate _onValueChanged;
-    
+
     public InfoNode()
     {
         style.maxWidth = style.minWidth = 240;
@@ -35,18 +31,11 @@ public class InfoNode : Node
         // 避免 _propertyTree 的回调持有 info.parent 的强引用导致无法 GC
         RegisterCallback<DetachFromPanelEvent>(_ => DisposePropertyTree());
     }
-    
-    /// <summary>
-    /// 【建议】使用 SetPosition() 替代 style.left/top，处理坐标系变换
-    ///   SetPosition(new Rect(info.pos.x, info.pos.y, 0, 0));
-    /// </summary>
+
     public void Set(BaseInfo info)
     {
         this.info = info;
-
-        style.left = info.pos.x;
-        style.top = info.pos.y;
-
+        SetPosition(new Rect(info.pos.x, info.pos.y, 0, 0));
         title = info.GetType().Name;
     }
 
@@ -108,36 +97,36 @@ public class InfoNode : Node
         _propertyTree.Dispose();
         _propertyTree = null;
     }
-    
-/// <summary>
-/// 【建议】portType 设具体类型限制连接，viewDataKey 不应与业务 GUID 混用
-///   var port = Port.Create<Edge>(Orientation.Horizontal, Direction.Input, Capacity.Multi, typeof(BaseInfo));
-///   port.viewDataKey = $"in_{info.GetHashCode()}";
-/// </summary>
-public Port InPort(BaseInfo info)
-{
-    var port = Create<Edge>(Orientation.Horizontal, Direction.Input, Capacity.Multi, null);
-    port.userData = info;
-    port.viewDataKey = info.inPort.guid;
-    port.portName = "InPort";
-    inputContainer.Add(port);
-    return port;
-}
 
-/// <summary>
-/// 【建议】同 InPort。Port.Create<Edge> 是官方标准用法。
-/// </summary>
-public Port OutPort(BaseInfo info)
-{
-    var port = Create<Edge>(Orientation.Horizontal, Direction.Output, Capacity.Multi, null);
-    port.userData = info;
-    port.viewDataKey = info.outPort.guid;
-    port.portName = "OutPort";
-    outputContainer.Add(port);
-    return port;
-}
+    /// <summary>
+    /// 【建议】portType 设具体类型限制连接，viewDataKey 不应与业务 GUID 混用
+    ///   var port = Port.Create<Edge>(Orientation.Horizontal, Direction.Input, Capacity.Multi, typeof(BaseInfo));
+    ///   port.viewDataKey = $"in_{info.GetHashCode()}";
+    /// </summary>
+    public Port InPort(BaseInfo info)
+    {
+        var port = Create<Edge>(Orientation.Horizontal, Direction.Input, Capacity.Multi, null);
+        port.userData = info;
+        port.viewDataKey = info.inPort.guid;
+        port.portName = "InPort";
+        inputContainer.Add(port);
+        return port;
+    }
+
+    /// <summary>
+    /// 【建议】同 InPort。Port.Create<Edge> 是官方标准用法。
+    /// </summary>
+    public Port OutPort(BaseInfo info)
+    {
+        var port = Create<Edge>(Orientation.Horizontal, Direction.Output, Capacity.Multi, null);
+        port.userData = info;
+        port.viewDataKey = info.outPort.guid;
+        port.portName = "OutPort";
+        outputContainer.Add(port);
+        return port;
+    }
     #region 回调
-    
+
     /// <summary>
     /// 节点被选中时调用
     /// 
@@ -148,7 +137,7 @@ public Port OutPort(BaseInfo info)
     {
         base.OnSelected();
     }
-    
+
     /// <summary>
     /// 节点取消选中时调用
     /// 
@@ -159,7 +148,7 @@ public Port OutPort(BaseInfo info)
     {
         base.OnUnselected();
     }
-    
+
     /// <summary>
     /// 端口被移除时调用
     /// 
@@ -181,7 +170,7 @@ public Port OutPort(BaseInfo info)
         Debug.Log("OnPortRemoved(Port port)");
         base.OnPortRemoved(port);
     }
-    
+
     /// <summary>
     /// 切换节点折叠状态时调用
     /// 
@@ -192,7 +181,7 @@ public Port OutPort(BaseInfo info)
         Debug.Log("ToggleCollapse");
         base.ToggleCollapse();
     }
-    
+
     /// <summary>
     /// 构建右键菜单
     /// 
