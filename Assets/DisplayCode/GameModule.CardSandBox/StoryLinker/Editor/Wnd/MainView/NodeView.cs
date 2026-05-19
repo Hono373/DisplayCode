@@ -1,14 +1,31 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEditor;
 using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.UIElements;
+/// <summary>
+/// StoryLinker 的主视图，继承自 GraphView
+/// 
+/// 【问题分析】
+/// 1. 保存策略：当前每次视图变化都触发 Save()，可能导致性能问题
+/// 2. 端口连接：LinkPorts 使用 ConnectTo 直接连接，绕过了端口兼容性检查
+/// 3. 节点位置：使用 layout 获取位置可能不准确
+/// 4. 清理逻辑：NodeEdgeClear 会清除所有元素，包括 ToolNode 和 MiniMap
+/// 
+/// 【推荐实现】
+/// - 使用 Undo 系统记录操作，而不是频繁 Save
+/// - 通过 GetCompatiblePorts 控制端口连接逻辑
+/// - 使用 GetPosition()/SetPosition() 管理节点位置
+/// </summary>
 public class NodeView : GraphView
 {
         public StoryLinker creator = null;
         public StoryInfo Info = null;
+        
+        // 【问题】直接在构造函数中注册 graphViewChanged，可能导致重复注册
+        // 【推荐】在 OnEnable/CreateGUI 中注册，在 OnDisable 中注销
         public NodeView(StoryLinker creatorWnd)
         {
             creator = creatorWnd;
@@ -25,6 +42,9 @@ public class NodeView : GraphView
             }
             return port.node.GetType();
         }
+        /// <summary>
+        /// NodeEdgeClear 会清除 ToolNode/MiniMap，建议只清数据节点和边
+        /// </summary>
         public void Fresh(StoryInfo info)
         {
             NodeEdgeClear();
@@ -34,12 +54,19 @@ public class NodeView : GraphView
             Debug.Log($"Fresh: Info.list 中有 {info.list?.Count ?? -1} 个节点");
             LoadNodeAndEdge(Info);
         }
+        
+        /// <summary>
+        /// 加载节点和边
+        /// 
+        /// 在数据加载场景下，LinkPorts 使用 Port.ConnectTo() 是官方 API，
+        /// 用于精确恢复已保存的连接，不需要兼容性检查。详见 LinkPorts 注释。
+        /// </summary>
         private void LoadNodeAndEdge(StoryInfo info)
         {
             var start = new StartNode(Info.startInfo);
             AddElement(start);
             CreateNode(info.list);
-            if (StoryLinker.Config.DebugMode)
+            if (StoryLinker.GetConfig().DebugMode)
             {
                 Debug.Log("In DebugMode,Skip LinkPorts");
                 return;
@@ -50,6 +77,10 @@ public class NodeView : GraphView
                 LinkPorts(nodeInfo);
             }
         }
+        /// <summary>
+        /// Port.ConnectTo 是官方 API，数据加载场景不需要兼容性检查。
+        /// outPort 或 inPort 为 null 时跳过即可。
+        /// </summary>
         private void LinkPorts(BaseInfo info)
         {
             var outPort = GetPortByGuid(info.outPort.guid);
@@ -60,6 +91,30 @@ public class NodeView : GraphView
                     AddElement(outPort.ConnectTo(inPort));
             }
         }
+        
+        /// <summary>
+        /// 根据数据类型创建对应的节点
+        /// 
+        /// 【问题】使用 switch-case 进行类型判断，不符合开闭原则
+        /// 
+        /// 【推荐实现】使用字典映射或工厂模式
+        /// private static readonly Dictionary<Type, Func<BaseInfo, InfoNode>> NodeFactories = new()
+        /// {
+        ///     { typeof(DialogueInfo), info => new DialogueNode().Init((DialogueInfo)info) },
+        ///     { typeof(OptionInfo), info => new OptionNode().Init((OptionInfo)info) },
+        ///     { typeof(EndInfo), info => new EndNode().Init((EndInfo)info) },
+        ///     { typeof(NoteInfo), info => new NoteNode().Init((NoteInfo)info) }
+        /// };
+        /// 
+        /// private void CreateNode<T>(List<T> list) where T : BaseInfo
+        /// {
+        ///     foreach (var info in list)
+        ///     {
+        ///         if (NodeFactories.TryGetValue(info.GetType(), out var factory))
+        ///             AddElement(factory(info));
+        ///     }
+        /// }
+        /// </summary>
         private void CreateNode<T>(List<T> list) where T : BaseInfo
         {
             foreach (var info in list)
@@ -81,6 +136,24 @@ public class NodeView : GraphView
                 }
             }
         }
+        
+        /// <summary>
+        /// 清除所有节点和边。移除前主动释放 InfoNode 的 PropertyTree，
+        /// 避免 Odin 属性树依赖 DetachFromPanelEvent 的不可靠时机。
+        /// 
+        /// 【推荐实现】
+        /// private void NodeEdgeClear()
+        /// {
+        ///     var edgesToRemove = edges.ToList();
+        ///     foreach (var edge in edgesToRemove) RemoveElement(edge);
+        ///     
+        ///     foreach (var node in nodes.OfType<InfoNode>().ToList())
+        ///     {
+        ///         node.DisposePropertyTree();
+        ///         RemoveElement(node);
+        ///     }
+        /// }
+        /// </summary>
         private void NodeEdgeClear()
         {
             // 先复制集合，避免迭代时修改导致异常
@@ -92,9 +165,39 @@ public class NodeView : GraphView
             }
             foreach (var node in nodesToRemove)
             {
+                // 主动释放 Odin PropertyTree，防止其依赖 DetachFromPanelEvent 的不确定时机而泄漏。
+                // PropertyTree.Dispose() 未调用时，Odin 的析构函数会报 GC 警告。
+                if (node is InfoNode infoNode)
+                    infoNode.DisposePropertyTree();
                 RemoveElement(node);
             }
         }
+        /// <summary>
+        /// 设置 GraphView 的交互界面
+        /// 
+        /// 【问题】
+        /// 1. 缺少 RectangleSelector（框选功能），用户代码在 CreatorTool 中手动添加
+        /// 2. 应该添加 ContentZoomer（缩放）的 Manipulator
+        /// 
+        /// 【推荐实现】
+        /// private void SetInterface()
+        /// {
+        ///     style.flexGrow = 1;
+        ///     
+        ///     // 添加标准 Manipulator 组合
+        ///     this.AddManipulator(new ContentDragger());      // 拖动视图
+        ///     this.AddManipulator(new SelectionDragger());    // 拖动选中节点
+        ///     this.AddManipulator(new RectangleSelector());   // 框选
+        ///     this.AddManipulator(new ClickSelector());       // 点击选择
+        ///     
+        ///     SetupZoom(0.25f, 2.0f);  // 扩大缩放范围
+        ///     
+        ///     var grid = new GridBackground();
+        ///     Insert(0, grid);
+        ///     grid.StretchToParentSize();
+        ///     styleSheets.Add(StoryLinker.Config.graphViewBG);
+        /// }
+        /// </summary>
         private void SetInterface()
         {
             style.flexGrow = 1;
@@ -107,14 +210,41 @@ public class NodeView : GraphView
             var grid = new GridBackground();
             Insert(0, grid);
             grid.StretchToParentSize();
-            styleSheets.Add(StoryLinker.Config.graphViewBG);
+            styleSheets.Add(StoryLinker.GetConfig().graphViewBG);
         }
+        
+        /// <summary>
+        /// 获取兼容的端口列表（控制哪些端口可以互相连接）
+        /// 
+        /// 【问题】
+        /// 当前实现允许所有不同方向的端口互相连接，没有类型检查
+        /// 应该根据 portType 进行更严格的兼容性检查
+        /// 
+        /// 【推荐实现】
+        /// public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
+        /// {
+        ///     return ports.Where(port =>
+        ///         port.direction != startPort.direction &&  // 方向必须相反
+        ///         port.node != startPort.node &&            // 不能连接自身
+        ///         (port.portType == startPort.portType ||   // 类型必须兼容
+        ///          startPort.portType.IsAssignableFrom(port.portType) ||
+        ///          port.portType.IsAssignableFrom(startPort.portType))
+        ///     ).ToList();
+        /// }
+        /// </summary>
         public override List<Port> GetCompatiblePorts(Port startPort, NodeAdapter nodeAdapter)
         {
             return (from nap in ports.ToList()
                     where nap.direction != startPort.direction && nap.node != startPort.node
                     select nap).ToList();
         }
+        
+        /// <summary>
+        /// 【问题】每次操作都调 Info.Save()，无法撤销且频繁写磁盘
+        ///
+        /// 【建议】改为 Undo.RecordObject + EditorUtility.SetDirty，
+        ///       关闭窗口时再 SaveAssetIfDirty。
+        /// </summary>
         private GraphViewChange WhenViewChanged(GraphViewChange change)
         {
             bool needSave = OnRemove(change);
@@ -127,6 +257,13 @@ public class NodeView : GraphView
             }
             return change;
         }
+        
+        /// <summary>
+        /// 【问题】static 方法返回 bool 绕弯通知 WhenViewChanged 保存
+        /// 【建议】改为实例方法，集成 Undo：
+        ///   Undo.RecordObject(Info, "Create Edge");
+        ///   EditorUtility.SetDirty(Info);
+        /// </summary>
         private static bool OnCreateEdge(GraphViewChange change)
         {
             if (change.edgesToCreate == null) return false;
@@ -139,6 +276,11 @@ public class NodeView : GraphView
             }
             return true;
         }
+        
+        /// <summary>
+        /// 【问题】node.Pos 返回 layout.x/y，拖拽时可能滞后于实际位置
+        /// 【建议】使用 node.GetPosition().position 替代
+        /// </summary>
         private static bool OnMove(GraphViewChange change)
         {
             if (change.movedElements == null) return false;
@@ -149,6 +291,13 @@ public class NodeView : GraphView
             }
             return true;
         }
+        
+        /// <summary>
+        /// 【问题】删除后无法撤销
+        /// 【建议】删除前调用 Undo.RecordObject(Info, "Remove Node") 记录容器状态
+        /// </summary>
+        /// }
+        /// </summary>
         private bool OnRemove(GraphViewChange change)
         {
             if (change.elementsToRemove == null) return false;

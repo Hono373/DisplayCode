@@ -5,7 +5,7 @@ using UnityEngine.UIElements;
 public class StoryLinkerConfig : ScriptableObject
 {
     private static StoryLinkerConfig _instance;
-    public static StoryLinkerConfig GetInstance()
+    public static StoryLinkerConfig Get()
     {
 
         if (_instance == null)
@@ -38,17 +38,14 @@ public class StoryLinkerConfig : ScriptableObject
     public StyleSheet graphViewBG;
     [Header("引用")]
     [SerializeField] DefaultAsset CreateTo;
-    public string GetCreatePath 
-    { 
-        get 
-        { 
-            if (CreateTo == null)
-            {
-                Debug.LogWarning("CreateTo 未设置，使用默认路径 Assets");
-                return "Assets";
-            }
-            return AssetDatabase.GetAssetPath(CreateTo); 
-        } 
+    public string GetCreatePath()
+    {
+        if (CreateTo == null)
+        {
+            Debug.LogWarning("CreateTo 未设置，使用默认路径 Assets");
+            return "Assets";
+        }
+        return AssetDatabase.GetAssetPath(CreateTo);
     }
     [Header("配置")]
     public bool DebugMode = false;

@@ -29,8 +29,8 @@ MonoBehaviour:
       AssetTags: 
       ActiveRuleName: EnableGroup
       Collectors:
-      - CollectPath: Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/GameRes
-        CollectorGUID: ef676cbb7ecbec947b80389fc28ea5fd
+      - CollectPath: Assets/DisplayCode/GameModule.CardSandBox/StoryLinker/Config
+        CollectorGUID: 994988b1869478746a9050367486b3e5
         CollectorType: 0
         AddressRuleName: AddressByFileName
         PackRuleName: PackDirectory
@@ -45,8 +45,8 @@ MonoBehaviour:
         FilterRuleName: CollectAll
         AssetTags: 
         UserData: 
-      - CollectPath: Assets/DisplayCode/GameModule.CardSandBox/Like.StoryCreator/GameRes
-        CollectorGUID: 4a86769c9a928464a9ba294b3af1d8bd
+      - CollectPath: Assets/DisplayCode/GameModule.CardSandBox/UnitIntention/Config
+        CollectorGUID: ef676cbb7ecbec947b80389fc28ea5fd
         CollectorType: 0
         AddressRuleName: AddressByFileName
         PackRuleName: PackDirectory

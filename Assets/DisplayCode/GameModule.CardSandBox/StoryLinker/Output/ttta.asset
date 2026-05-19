@@ -10,40 +10,38 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4ba36da5167ac7144afce1a41598eef2, type: 3}
-  m_Name: tttt
+  m_Name: ttta
   m_EditorClassIdentifier: 
   startInfo:
     parent: {fileID: 11400000}
     inPort:
       guid: 
-    pos: {x: 220, y: 50}
+    pos: {x: 200, y: 100}
     outPort:
-      guid: 141038a9-a39c-4e20-96ba-24f8b6afcac7
-      nextGuids:
-      - 898c8b3d-6222-4332-b25c-e6b8b08cb276
-    title: "\u53BB\u95EE\u9A71\u868A\u5668"
+      guid: 0c73e9a3-7636-4154-a1d2-4d5e94ee6a9c
+      nextGuids: []
+    title: 
     describe: 
     background: {fileID: 0}
     bgm: {fileID: 0}
   list:
-  - rid: 1535549771605606400
-  - rid: 1535549771605606401
-  - rid: 1535549771605606402
-  - rid: 1535549771605606403
+  - rid: 1535549792667041792
+  - rid: 1535549792667041793
+  - rid: 1535549792667041794
+  - rid: 1535549792667041795
   references:
     version: 2
     RefIds:
-    - rid: 1535549771605606400
+    - rid: 1535549792667041792
       type: {class: DialogueInfo, ns: , asm: GameModule.StoryLinker.Runtime}
       data:
         parent: {fileID: 11400000}
         inPort:
-          guid: 433854e3-8f80-42b0-9c7d-38783c4b00a8
-        pos: {x: 809, y: 82}
+          guid: ec92b548-8e5b-4b5c-82c3-027b6388565f
+        pos: {x: 440, y: 100}
         outPort:
-          guid: 781c09f8-7563-40b3-89b6-3d84e4c939d4
-          nextGuids:
-          - c11a4eb5-d269-4a33-8e5c-9c0b0b6a79b8
+          guid: f97caaa6-9799-4cc1-97d0-59ecadfa0866
+          nextGuids: []
         conditions: []
         anims: []
         speaker:
@@ -54,41 +52,40 @@ MonoBehaviour:
           cn: 
           en: 
           jp: 
-    - rid: 1535549771605606401
+    - rid: 1535549792667041793
       type: {class: OptionInfo, ns: , asm: GameModule.StoryLinker.Runtime}
       data:
         parent: {fileID: 11400000}
         inPort:
-          guid: 898c8b3d-6222-4332-b25c-e6b8b08cb276
-        pos: {x: 513, y: 68}
+          guid: 5527e75f-4cbd-4260-bca5-677dbcc986f1
+        pos: {x: 680, y: 100}
         outPort:
-          guid: a737d306-9406-48a8-a8a2-cad2b5863f03
-          nextGuids:
-          - 433854e3-8f80-42b0-9c7d-38783c4b00a8
+          guid: 8712c5e8-9c7d-4a73-8254-cbcf5fd54a97
+          nextGuids: []
         needCondition: 0
         conditions: []
         text:
           cn: 
           en: 
           jp: 
-    - rid: 1535549771605606402
+    - rid: 1535549792667041794
       type: {class: EndInfo, ns: , asm: GameModule.StoryLinker.Runtime}
       data:
         parent: {fileID: 11400000}
         inPort:
-          guid: c11a4eb5-d269-4a33-8e5c-9c0b0b6a79b8
-        pos: {x: 1093, y: 308}
+          guid: ef13c165-1d24-4d53-a2a4-7411d65b693e
+        pos: {x: 920, y: 100}
         outPort:
           guid: 
           nextGuids: []
-    - rid: 1535549771605606403
+    - rid: 1535549792667041795
       type: {class: NoteInfo, ns: , asm: GameModule.StoryLinker.Runtime}
       data:
         parent: {fileID: 11400000}
         inPort:
-          guid: bd509ebd-54f2-4ad2-b162-f2ceb2f5af7a
-        pos: {x: 67, y: 407}
+          guid: c0c64e94-9502-41a4-b541-398e3ef05e30
+        pos: {x: 200, y: 400}
         outPort:
-          guid: 34e35476-1606-4c09-879c-dff209219f93
+          guid: 00b3d8f9-4185-4e17-9a96-2ef25bba6e7b
           nextGuids: []
         describe: 

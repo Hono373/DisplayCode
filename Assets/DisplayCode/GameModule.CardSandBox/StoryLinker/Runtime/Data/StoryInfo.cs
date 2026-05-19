@@ -2,13 +2,25 @@ using System;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-
+/// <summary>
+/// 【问题】guidHash 未序列化导致每次反序列化后重现构造，GUID 可能重复；
+///       Save 含 Refresh() 导致全量扫描
+/// 【建议】去掉 guidHash，直接 Guid.NewGuid().ToString()；Save 只调 SaveAssetIfDirty
+/// </summary>
 public class StoryInfo : ScriptableObject
 {
     #region 字段
     public StartInfo startInfo;
+    /// <summary>
+    /// 【问题】使用 [SerializeReference] 可以序列化多态类型，但性能较差
+    /// 【推荐】如果类型固定，使用 [SerializeField] + 具体类型更好
+    /// </summary>
     [SerializeReference] public List<BaseInfo> list = new();
     #endregion
+    
+    /// <summary>
+    /// 【建议】用配置表或常量管理初始节点位置，避免硬编码
+    /// </summary>
     public void Init()
     {
         // 先初始化 startInfo，再清空 guidHash，避免 NewGuid() 时访问未初始化的 startInfo
@@ -21,6 +33,10 @@ public class StoryInfo : ScriptableObject
         new NoteInfo().Init(this, new(200, 400));
         Debug.Log($"Init 完成，list 中有 {list.Count} 个节点");
     }
+    
+    /// <summary>
+    /// 【建议】去掉 guidHash，直接 Guid.NewGuid().ToString()
+    /// </summary>
     public string NewGuid()
     {
         var guid = Guid.NewGuid().ToString();
@@ -39,6 +55,10 @@ public class StoryInfo : ScriptableObject
         guidHash.Add(guid);  // 修复：使用 guidHash 而不是 GuidHash
         return guid;
     }
+    
+    /// <summary>
+    /// 【建议】用 list.ToList() 遍历避免修改集合的异常；加 Undo.RecordObject 支持撤销
+    /// </summary>
     public void Remove(BaseInfo info)
     {
         list.Remove(info);
@@ -48,16 +68,23 @@ public class StoryInfo : ScriptableObject
             i.Cleaner(info);
         }
     }
+    
+    /// <summary>
+    /// 标记脏 + 写盘。不调用 Refresh()，避免全量扫描卡顿。
+    /// </summary>
     public void Save()
     {
 #if UNITY_EDITOR
         EditorUtility.SetDirty(this);
         AssetDatabase.SaveAssetIfDirty(this);
-        AssetDatabase.Refresh();
-        Debug.Log("Save Successed");
 #endif
     }
+    
     void Reset() => Init();
+    
+    /// <summary>
+    /// 【建议】guidHash 未序列化，重构后应去掉。直接 Guid.NewGuid() 即可。
+    /// </summary>
     HashSet<string> guidHash;
     HashSet<string> GuidHash
     {
