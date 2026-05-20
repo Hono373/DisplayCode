@@ -13,12 +13,12 @@ public class AnimProcess
     public static AnimProcess Create(string info)
     {
         var p = new AnimProcess();
-        p.sequence = SequenceExtension.Create(info).Pause().SetAutoKill(false);
+        p.sequence = SequenceExtensions.Create(info).Pause().SetAutoKill(false);
         return p;
     }
     public void AddInterval(float spd)
     {
-        var interval = SequenceExtension.Create();
+        var interval = SequenceExtensions.Create();
         interval.AppendInterval(spd);
         sequence.Append(interval);
     }
@@ -26,7 +26,7 @@ public class AnimProcess
     {
         if (!appendDict.TryGetValue(info, out var result))
         {
-            appendDict[info] = result = SequenceExtension.Create($"{info}").Pause();
+            appendDict[info] = result = SequenceExtensions.Create($"{info}").Pause();
         }
         result.Append(seq);
     }

@@ -23,7 +23,7 @@ MonoBehaviour:
     - rid: -2
       type: {class: , ns: , asm: }
     - rid: 2671306780715253760
-      type: {class: StatusInfo, ns: , asm: GameModule.CardSandBox.UnitIntention}
+      type: {class: StatusInfo, ns: GameModule.CardSandBox.UnitIntention, asm: GameModule.CardSandBox.UnitIntention}
       data:
         name: idle
         weight: 1
@@ -34,7 +34,7 @@ MonoBehaviour:
         - rid: 2671306780715253761
         - rid: 2671306780715253763
     - rid: 2671306780715253761
-      type: {class: SkillInfo, ns: , asm: GameModule.CardSandBox.UnitIntention}
+      type: {class: SkillInfo, ns: GameModule.CardSandBox.UnitIntention, asm: GameModule.CardSandBox.UnitIntention}
       data:
         name: "\u65CB\u98CE\u65A9"
         weight: 1
@@ -43,7 +43,7 @@ MonoBehaviour:
         skillEffectInfo:
         - rid: 2671306789693161476
     - rid: 2671306780715253763
-      type: {class: SkillInfo, ns: , asm: GameModule.CardSandBox.UnitIntention}
+      type: {class: SkillInfo, ns: GameModule.CardSandBox.UnitIntention, asm: GameModule.CardSandBox.UnitIntention}
       data:
         name: "\u706B\u7403\u672F"
         weight: 1
@@ -52,17 +52,17 @@ MonoBehaviour:
         skillEffectInfo:
         - rid: 2671306789693161477
     - rid: 2671306789693161475
-      type: {class: GameConditionExample, ns: , asm: GameModule.CardSandBox.UnitIntention}
+      type: {class: GameConditionExample, ns: GameModule.CardSandBox.UnitIntention, asm: GameModule.CardSandBox.UnitIntention}
       data:
         index: 0
     - rid: 2671306789693161476
-      type: {class: SkillEffectInfo, ns: , asm: GameModule.CardSandBox.UnitIntention}
+      type: {class: SkillEffectInfo, ns: GameModule.CardSandBox.UnitIntention, asm: GameModule.CardSandBox.UnitIntention}
       data:
         desc: "\u5BF9\u6240\u6709\u4EBA\u9020\u6210{0}\u4F24\u5BB3"
         effectInfo:
           rid: -2
     - rid: 2671306789693161477
-      type: {class: SkillEffectInfo, ns: , asm: GameModule.CardSandBox.UnitIntention}
+      type: {class: SkillEffectInfo, ns: GameModule.CardSandBox.UnitIntention, asm: GameModule.CardSandBox.UnitIntention}
       data:
         desc: "\u9020\u6210{0}\u4F24\u5BB3"
         effectInfo:

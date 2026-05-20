@@ -6,9 +6,8 @@ public class AnimProcessManager
     int log;
     private static readonly object _lock = new();
     private static AnimProcessManager _instance;
-    public static AnimProcessManager Instance
+    public static AnimProcessManager GetInstance()
     {
-        get
         {
             if (_instance == null)
             {
@@ -26,14 +25,14 @@ public class AnimProcessManager
     public void Init() { }
     public static void Enqueue(AnimProcess pa)
     {
-        var instance = Instance;
+        var instance = GetInstance();
         pa.SetString(instance.log++.ToString());
         instance.queue.Enqueue(pa);
         TryStart();
     }
     public static void TryStart()
     {
-        var ins = Instance;
+        var ins = GetInstance();
         if (ins.current == null)
         {
             if (ins.queue.Count > 0)
@@ -47,7 +46,7 @@ public class AnimProcessManager
     }
     public static void Clear()
     {
-        var ins = Instance;
+        var ins = GetInstance();
 
         var destroy = ins.current;
         DOVirtual.DelayedCall(0.1f, () => destroy.Kill());

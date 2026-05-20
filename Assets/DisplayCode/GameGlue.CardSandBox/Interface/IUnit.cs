@@ -10,7 +10,7 @@ public interface IBattleUnit
     IBattleUnitObj GetObj();
     IBattleUnitObj InstantiateObj();
     UnitIntention GetIntention();
-    void SetModifier(Modifier modifier);
+
 }
 [Serializable]
 public class Unit
@@ -20,18 +20,12 @@ public class Unit
     public string key;
     public int maxHP;
     public int hp;
-    public Dictionary<string, Modifier> modifierDict = new();
+
     public static Unit Create(string key, string id, bool temporary)
     {
         var unit = new Unit();
 
-        unit.temporary = temporary;
-        unit.id = id;
-        unit.key = key;
 
-        var info = UnitInfo.Get(key);
-
-        unit.data = UnitData.Create(info);
 
         return unit;
     }
@@ -50,21 +44,12 @@ public class BattleUnit : IBattleUnit
     public BattleUnitEnum team;
 
     BattleUnit() { }
-    public static BattleUnit Create(IUnit unitData, BattleUnit.BattleUnitEnum team)
+    public static BattleUnit Create(IUnit unitData, BattleUnitEnum team)
     {
         var battleUnit = new BattleUnit();
-        battleUnit.team = team;
-        battleUnit.data = BattleUnitData.Create(unitData, team);
         return battleUnit;
     }
-    public BattleUnitObj GetObj()
-    {
-        if (obj != null) return obj;
-        var topObj = DeckBuildBattle.GetObj();
-        obj = ResManager.InstantiateSync<BattleUnitObj>(topObj.unitContainer.transform);
-        obj.Init(this);
-        return obj;
-    }
+
 
     public IBattleUnitInfo GetInfo()
     {
@@ -76,22 +61,19 @@ public class BattleUnit : IBattleUnit
         throw new System.NotImplementedException();
     }
 
-    public IBattleUnitObj GetObj()
-    {
-        throw new System.NotImplementedException();
-    }
 
     public IBattleUnitObj InstantiateObj()
     {
         throw new System.NotImplementedException();
     }
 
-    public void SetModifier(Modifier modifier)
-    {
-        throw new System.NotImplementedException();
-    }
 
     public IBattleUnitData GetData()
+    {
+        throw new NotImplementedException();
+    }
+
+    public IBattleUnitObj GetObj()
     {
         throw new NotImplementedException();
     }
@@ -99,25 +81,6 @@ public class BattleUnit : IBattleUnit
 public interface IBattleUnitData
 {
 
-}
-public class BattleUnitData
-{
-    public string id;
-    public string key;
-    public int maxHP;
-    public int hp;
-    public Dictionary<string, Modifier> modifierDict = new();
-    public List<int> lastActionIndexList = new();
-    public UnitIntention intention;
-    public static BattleUnitData Create(IBattleUnitInfo info, BattleUnit.BattleUnitEnum team)
-    {
-        var data = new BattleUnitData();
-        data.id = info.id;
-        data.key = info.key;
-        data.maxHP = info.data.maxHP;
-        data.hp = info.data.hp;
-        return data;
-    }
 }
 
 public interface IBattleUnitInfo

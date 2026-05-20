@@ -1,5 +1,5 @@
 using DG.Tweening;
-public class SequenceExtension
+public class SequenceExtensions
 {
     public struct Info
     {

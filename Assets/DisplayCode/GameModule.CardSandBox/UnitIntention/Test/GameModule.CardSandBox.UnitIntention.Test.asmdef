@@ -1,10 +1,9 @@
 {
-    "name": "GameGlue.CardSandBox",
-    "rootNamespace": "",
+    "name": "GameModule.CardSandBox.UnitIntention.Test",
+    "rootNamespace": "GameModule.CardSandBox.UnitIntention",
     "references": [
-        "GUID:b61e00cde86dbb5489c57defa0e48187",
         "GUID:e6d10d328561cf340949d0c65b54e16c",
-        "GUID:6055be8ebefd69e48b49212b09b47b2f"
+        "GUID:b61e00cde86dbb5489c57defa0e48187"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

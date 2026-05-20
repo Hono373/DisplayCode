@@ -1,8 +1,8 @@
 {
-    "name": "AnimProcessSystem",
-    "rootNamespace": "AnimProcessSystem",
+    "name": "GameBase.ModifierManager",
+    "rootNamespace": "GameBase.ModifierManager",
     "references": [
-        "DG.Tweening"
+        "GameBase.CardSandBox"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
