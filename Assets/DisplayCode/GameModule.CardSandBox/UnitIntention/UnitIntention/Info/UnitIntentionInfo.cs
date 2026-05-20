@@ -2,48 +2,50 @@ using CardSandBoxLibrary;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-
-[Serializable]
-public class UnitIntentionInfo : GameNode
+namespace GameModule.CardSandBox.UnitIntention
 {
-    [SerializeField] ConditionBox conditionBox = new();
-    [SerializeReference] List<StatusInfo> statusInfos = new();
-    public IReadOnlyList<StatusInfo> StatusInfos() => statusInfos;
-    public override IReadOnlyList<IWeight> Weights() => statusInfos;
-    public override IReadOnlyList<GameNode> Childs() => statusInfos;
-    public override ConditionBox ConditionBox() => conditionBox;
-    public ISkillInfo Deserialize(IntentionData skillData)
+    [Serializable]
+    public class UnitIntentionInfo : GameNode
     {
-        try
+        [SerializeField] ConditionBox conditionBox = new();
+        [SerializeReference] List<StatusInfo> statusInfos = new();
+        public IReadOnlyList<StatusInfo> StatusInfos() => statusInfos;
+        public override IReadOnlyList<IWeight> Weights() => statusInfos;
+        public override IReadOnlyList<GameNode> Childs() => statusInfos;
+        public override ConditionBox ConditionBox() => conditionBox;
+        public ISkillInfo Deserialize(IntentionData skillData)
         {
-            return statusInfos[skillData.skillIndexs[0]].Deserialize(skillData.skillIndexs[1]);
-        }
-        catch (Exception e)
-        {
-            Debug.Log(e.Message);
-            return NullSkillInfo.Get();
-        }
-    }
-    public int[] GetSkillIndexs()
-    {
-        var indexs = new int[2];
-        try
-        {
-            GameNode node = this;
-            var i = 0;
-            while (!node.IsEnd())
+            try
             {
-                var childIndex = GetChildIndex();
-                indexs[i] = childIndex;
-                node = node.Childs()[childIndex];
-                i++;
+                return statusInfos[skillData.skillIndexs[0]].Deserialize(skillData.skillIndexs[1]);
             }
-            return indexs;
+            catch (Exception e)
+            {
+                Debug.Log(e.Message);
+                return NullSkillInfo.Get();
+            }
         }
-        catch (Exception e)
+        public int[] GetSkillIndexs()
         {
-            Debug.Log($"[{nameof(UnitIntentionInfo)}]{e.Message}");
-            return indexs;
+            var indexs = new int[2];
+            try
+            {
+                GameNode node = this;
+                var i = 0;
+                while (!node.IsEnd())
+                {
+                    var childIndex = GetChildIndex();
+                    indexs[i] = childIndex;
+                    node = node.Childs()[childIndex];
+                    i++;
+                }
+                return indexs;
+            }
+            catch (Exception e)
+            {
+                Debug.Log($"[{nameof(UnitIntentionInfo)}]{e.Message}");
+                return indexs;
+            }
         }
     }
 }

@@ -1,11 +1,13 @@
 ﻿<Solution>
+  <Project Path="spine-unity.csproj" />
   <Project Path="Assembly-CSharp-firstpass.csproj" />
+  <Project Path="spine-unity-editor.csproj" />
   <Project Path="GameModule.CardSandBox.UnitIntention.csproj" />
   <Project Path="GameModule.StoryLinker.Runtime.csproj" />
   <Project Path="GameBase.CardSandBox.csproj" />
   <Project Path="Assembly-CSharp-Editor-firstpass.csproj" />
   <Project Path="GameModule.StoryLinker.Editor.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
+  <Project Path="GameGlue.CardSandBox.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
   <Project Path="AnimProcessSystem.csproj" />
 </Solution>

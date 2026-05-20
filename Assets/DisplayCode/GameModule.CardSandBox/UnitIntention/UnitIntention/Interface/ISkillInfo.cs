@@ -1,9 +1,11 @@
 using System.Collections.Generic;
-
-public interface ISkillInfo
+namespace GameModule.CardSandBox.UnitIntention
 {
-    SelectorBox SelectMode();
-    List<SkillEffectInfo> EffectInfos();
-    List<IntentionUIData> GetUIData();
+    public interface ISkillInfo
+    {
+        SelectorBox SelectMode();
+        List<SkillEffectInfo> EffectInfos();
+        List<IntentionUIData> GetUIData();
+    }
 }
 

@@ -1,40 +1,52 @@
 using System;
+using Newtonsoft.Json;
 using UnityEngine;
-[Serializable]
-public class UnitIntention
+
+namespace GameModule.CardSandBox.UnitIntention
 {
-    public ISkillInfo GetSKill(IntentionData intentionData,UnitIntentionInfo Info)
+    [Serializable]
+    public class UnitIntention
     {
-        try
+        [JsonProperty][SerializeReference] IntentionData intentionData;
+        public ISkillInfo GetSKill(UnitIntentionInfo info)
         {
-            return Info.StatusInfos()[intentionData.skillIndexs[0]].Deserialize(intentionData.skillIndexs[1]);
+            var index = GetSkillIndexs(info);
+            intentionData = IntentionData.Create(index);
+            return GetSKill(intentionData, info);
         }
-        catch (Exception e)
+        public ISkillInfo GetSKill(IntentionData intentionData, UnitIntentionInfo Info)
         {
-            Debug.Log(e.Message);
-            return NullSkillInfo.Get();
-        }
-    }
-    public int[] GetSkillIndexs(UnitIntentionInfo info)
-    {
-        var indexs = new int[2];
-        try
-        {
-            GameNode node = info;
-            var i = 0;
-            while (!node.IsEnd())
+            try
             {
-                var childIndex = node.GetChildIndex();
-                indexs[i] = childIndex;
-                node = node.Childs()[childIndex];
-                i++;
+                return Info.StatusInfos()[intentionData.skillIndexs[0]].Deserialize(intentionData.skillIndexs[1]);
             }
-            return indexs;
+            catch (Exception e)
+            {
+                Debug.Log(e.Message);
+                return NullSkillInfo.Get();
+            }
         }
-        catch (Exception e)
+        public int[] GetSkillIndexs(UnitIntentionInfo info)
         {
-            Debug.Log($"[{nameof(UnitIntentionInfo)}]{e.Message}");
-            return indexs;
+            var indexs = new int[2];
+            try
+            {
+                GameNode node = info;
+                var i = 0;
+                while (!node.IsEnd())
+                {
+                    var childIndex = node.GetChildIndex();
+                    indexs[i] = childIndex;
+                    node = node.Childs()[childIndex];
+                    i++;
+                }
+                return indexs;
+            }
+            catch (Exception e)
+            {
+                Debug.Log($"[{nameof(UnitIntentionInfo)}]{e.Message}");
+                return indexs;
+            }
         }
     }
 }

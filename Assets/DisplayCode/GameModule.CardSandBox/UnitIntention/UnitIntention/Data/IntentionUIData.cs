@@ -1,14 +1,16 @@
-public class IntentionUIData
+namespace GameModule.CardSandBox.UnitIntention
 {
-    public BattleEffectType type;
-    public int? value;
-    IntentionUIData() { }
-    public static IntentionUIData Create(BattleEffectType sprite, int? value)
+    public class IntentionUIData
     {
-        var data = new IntentionUIData();
-        data.type = sprite;
-        data.value = value;
-        return data;
+        public BattleEffectType type;
+        public int? value;
+        IntentionUIData() { }
+        public static IntentionUIData Create(BattleEffectType sprite, int? value)
+        {
+            var data = new IntentionUIData();
+            data.type = sprite;
+            data.value = value;
+            return data;
+        }
     }
-
 }

@@ -1,26 +1,27 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-/// <summary>
-/// 名字起的不算好
-/// </summary>
-[Serializable]
-public class SkillEffectInfo : ISkillEffectInfo
+
+namespace GameModule.CardSandBox.UnitIntention
 {
-    [SerializeField] string desc;
-    [SerializeReference] IEffectInfo effectInfo;
-    public IEffectInfo EffectInfo() => effectInfo;
-    public IntentionUIData IntentionsData()
+    [Serializable]
+    public class SkillEffectInfo : ISkillEffectInfo
     {
-        return IntentionUIData.Create(effectInfo.EffectType(), effectInfo.GetValue());
-    }
-    public string Desc()
-    {
-        var result = effectInfo.GetValue();
-        if (result.HasValue)
+        [SerializeField] string desc;
+        [SerializeReference] IEffectInfo effectInfo;
+        public IEffectInfo EffectInfo() => effectInfo;
+        public IntentionUIData IntentionsData()
         {
-            return string.Format(desc, result.Value);
+            return IntentionUIData.Create(effectInfo.EffectType(), effectInfo.GetValue());
         }
-        return desc;
+        public string Desc()
+        {
+            var result = effectInfo.GetValue();
+            if (result.HasValue)
+            {
+                return string.Format(desc, result.Value);
+            }
+            return desc;
+        }
     }
 }

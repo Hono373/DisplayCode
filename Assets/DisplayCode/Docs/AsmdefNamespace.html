@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>asmdef name / rootNamespace / 代码中 namespace 的关系</title>
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: -apple-system, "Segoe UI", sans-serif; padding: 40px; background: #f5f5f5; color: #333; max-width: 900px; margin: 0 auto; }
+h1 { font-size: 22px; margin-bottom: 8px; color: #1a1a2e; }
+h2 { font-size: 18px; margin: 28px 0 12px; color: #16213e; border-left: 4px solid #e94560; padding-left: 12px; }
+h3 { font-size: 15px; margin: 20px 0 8px; color: #0f3460; }
+p { line-height: 1.7; margin-bottom: 10px; font-size: 14px; color: #444; }
+.card { background: #fff; border-radius: 8px; padding: 20px 24px; margin-bottom: 18px; box-shadow: 0 1px 4px rgba(0,0,0,0.08); }
+.tag { display: inline-block; background: #e94560; color: #fff; font-size: 11px; padding: 2px 8px; border-radius: 4px; margin-right: 6px; }
+.tag-green { background: #2ecc71; }
+.tag-blue { background: #3498db; }
+.tag-gray { background: #95a5a6; }
+code { background: #f0f0f0; padding: 2px 6px; border-radius: 4px; font-size: 13px; font-family: 'Cascadia Code', 'JetBrains Mono', monospace; }
+pre { background: #1e1e2e; color: #cdd6f4; padding: 16px; border-radius: 6px; font-size: 13px; overflow-x: auto; margin: 10px 0; line-height: 1.6; }
+pre .comment { color: #6c7086; }
+pre .key { color: #89b4fa; }
+pre .str { color: #a6e3a1; }
+pre .cls { color: #fab387; }
+table { width: 100%; border-collapse: collapse; margin: 12px 0; font-size: 14px; }
+th { background: #16213e; color: #fff; padding: 10px 14px; text-align: left; font-weight: 600; }
+td { padding: 10px 14px; border-bottom: 1px solid #e0e0e0; }
+tr:hover td { background: #f8f8ff; }
+.check { display: inline-block; width: 18px; height: 18px; border-radius: 50%; color: #fff; text-align: center; line-height: 18px; font-size: 12px; }
+.check-y { background: #2ecc71; } .check-n { background: #e74c3c; }
+.highlight { background: #fff3cd; padding: 2px 4px; border-radius: 3px; }
+</style>
+</head>
+<body>
+
+<h1>asmdef 配置 vs C# 命名空间</h1>
+<p style="color: #666; font-size: 13px;">三个概念各管各的事，但组合起来决定你的代码怎么被"看见"</p>
+
+<!-- ============ 概念区 ============ -->
+<div class="card">
+<h2>一、三个基本概念</h2>
+
+<table>
+<tr><th>概念</th><th>写在哪</th><th>管什么</th><th>类比</th></tr>
+<tr>
+  <td><code>name</code></td>
+  <td>asmdef 的 <code>"name"</code> 字段</td>
+  <td><strong>编译单元的名字</strong> — Unity 用它生成 dll 文件名</td>
+  <td>一个人的身份证名字</td>
+</tr>
+<tr>
+  <td><code>rootNamespace</code></td>
+  <td>asmdef 的 <code>"rootNamespace"</code> 字段</td>
+  <td><strong>新建文件时的默认命名空间</strong> — 只影响 IDE 自动生成的代码</td>
+  <td>公司默认给你的邮箱域名</td>
+</tr>
+<tr>
+  <td><code>namespace</code></td>
+  <td>C# 源码中的 <code>namespace Xxx { }</code></td>
+  <td><strong>代码的逻辑分组</strong> — 编译器和人看的，决定类型全名</td>
+  <td>你实际名片上印的地址</td>
+</tr>
+</table>
+
+<div style="background: #fef9e7; border-left: 4px solid #f1c40f; padding: 12px 16px; margin-top: 12px; font-size: 14px;">
+<strong>关键结论：</strong> <code>name</code> 和 <code>rootNamespace</code> <strong>都不强制</strong>代码里的 namespace 必须跟它们一致。它们只是"建议/默认值"，你可以写任何 namespace。
+</div>
+</div>
+
+<!-- ============ 你的现状 ============ -->
+<div class="card">
+<h2>二、你的 asmdef 现状</h2>
+<pre>{
+  <span class="key">"name"</span>: <span class="str">"GameModule.CardSandBox.UnitIntention"</span>,
+  <span class="key">"rootNamespace"</span>: <span class="str">""</span>  <span class="comment">// ← 空字符串</span>
+}</pre>
+<p><code>rootNamespace = ""</code> 意味着：IDE 新建文件时 <strong>不生成任何 namespace</strong>，代码就是全局无命名空间状态——也就是你现在这样。</p>
+</div>
+
+<!-- ============ 三种方案 ============ -->
+<div class="card">
+<h2>三、加命名空间的三种选择</h2>
+
+<h3>方案 A：空 rootNamespace + 手动写短 namespace</h3>
+<pre>asmdf: <span class="key">"rootNamespace"</span>: <span class="str">""</span>
+代码:  <span class="cls">namespace</span> UnitIntention { ... }</pre>
+<table>
+<tr><th>考量</th><th>评价</th></tr>
+<tr><td>代码简洁度</td><td>⭐⭐⭐⭐⭐ 最精简，写起来舒服</td></tr>
+<tr><td>与 asmdef 关联</td><td>弱 — 别人只看代码不知道属于哪个 asmdef</td></tr>
+<tr><td>新文件体验</td><td>新文件无默认 namespace，手动加</td></tr>
+<tr><td>推荐场景</td><td>小模块，追求代码清爽</td></tr>
+</table>
+
+<h3>方案 B：rootNamespace 与 asmdef name 一致</h3>
+<pre>asmdf: <span class="key">"rootNamespace"</span>: <span class="str">"GameModule.CardSandBox.UnitIntention"</span>
+代码:  <span class="cls">namespace</span> GameModule.CardSandBox.UnitIntention { ... }</pre>
+<table>
+<tr><th>考量</th><th>评价</th></tr>
+<tr><td>代码简洁度</td><td>⭐⭐ 非常长，一行 namespace 占小半屏</td></tr>
+<tr><td>与 asmdf 关联</td><td>强 — 看 namespace 就知道在哪个 asmdef 里</td></tr>
+<tr><td>新文件体验</td><td>自动带 namespace，不用手动写</td></tr>
+<tr><td>推荐场景</td><td>大项目，多人协作，需要快速定位代码归属</td></tr>
+</table>
+
+<h3>方案 C：rootNamespace 设短名称 + 代码一致</h3>
+<pre>asmdf: <span class="key">"rootNamespace"</span>: <span class="str">"UnitIntention"</span>
+代码:  <span class="cls">namespace</span> UnitIntention { ... }</pre>
+<table>
+<tr><th>考量</th><th>评价</th></tr>
+<tr><td>代码简洁度</td><td>⭐⭐⭐⭐ 短，好读</td></tr>
+<tr><td>与 asmdef 关联</td><td>中 — 名字部分匹配，不全等</td></tr>
+<tr><td>新文件体验</td><td>自动带 <code>namespace UnitIntention</code></td></tr>
+<tr><td>推荐场景</td><td>模块内代码统一，又不想写长 namespace</td></tr>
+</table>
+
+</div>
+
+<!-- ============ 组合场景 ============ -->
+<div class="card">
+<h2>四、"不一致" 会怎样？</h2>
+
+<p>很多新手担心：<code>rootNamespace</code> 和代码里的 namespace 对不上，会不会报错？</p>
+
+<p style="background: #e8f8f5; padding: 12px 16px; border-radius: 6px;">
+<strong>完全不会。</strong> Unity 编译器和 C# 编译器只看代码里的 <code>namespace</code> 关键字。<br>
+<code>rootNamespace</code> 只影响 IDE 的"新建文件模板"，对编译结果 <strong>零影响</strong>。
+</p>
+
+<p>所以这三种组合在编译器眼里 <strong>完全等价</strong>：</p>
+
+<table>
+<tr><th>rootNamespace</th><th>代码中的 namespace</th><th>编译结果</th></tr>
+<tr><td><code>""</code></td><td><code>UnitIntention</code></td><td>✅ 正常编译</td></tr>
+<tr><td><code>""</code></td><td><code>GameModule.CardSandBox.UnitIntention</code></td><td>✅ 正常编译</td></tr>
+<tr><td><code>Foo.Bar</code></td><td><code>UnitIntention</code></td><td>✅ 正常编译</td></tr>
+</table>
+</div>
+
+<!-- ============ 影响范围 ============ -->
+<div class="card">
+<h2>五、各方案的影响对比</h2>
+
+<table>
+<tr><th>关注点</th><th>A: 短 ns (无 root)</th><th>B: 长 ns (跟 asmdf)</th><th>C: 短 ns (root 对齐)</th></tr>
+<tr>
+  <td>20 个文件修改量</td>
+  <td>每文件加 <code>namespace UnitIntention</code></td>
+  <td>每文件加 <code>namespace GameModule.CardSandBox.UnitIntention</code></td>
+  <td>同 A</td>
+</tr>
+<tr>
+  <td>using 写法</td>
+  <td><code>using UnitIntention;</code></td>
+  <td><code>using GameModule.CardSandBox.UnitIntention;</code></td>
+  <td><code>using UnitIntention;</code></td>
+</tr>
+<tr>
+  <td>外部引用的阅读体验</td>
+  <td>简洁</td>
+  <td>过长，换行常见</td>
+  <td>简洁</td>
+</tr>
+<tr>
+  <td>新文件自动带 ns</td>
+  <td>❌ 需要手动加</td>
+  <td>✅ 自动带长 ns</td>
+  <td>✅ 自动带短 ns</td>
+</tr>
+<tr>
+  <td>模块归属一目了然</td>
+  <td>❌ 无法从 ns 反推 asmdf</td>
+  <td>✅ 完全对应</td>
+  <td>⚠️ 部分对应</td>
+</tr>
+</table>
+</div>
+
+<!-- ============ 我的推荐 ============ -->
+<div class="card">
+<h2>六、对你这项目的推荐</h2>
+
+<p>从你的项目结构看：</p>
+
+<ul style="margin: 10px 0 10px 20px; line-height: 2; font-size: 14px;">
+  <li>UnitIntention 是一个 <strong>独立子模块</strong>，不是顶层项目</li>
+  <li>类名（如 <code>StatusInfo</code>、<code>IntentionData</code>）本身不带前缀</li>
+  <li>当前外部引用为 <strong>0</strong></li>
+</ul>
+
+<p style="background: #eaf2f8; padding: 16px; border-radius: 6px; font-size: 15px;">
+<strong>→ 推荐方案 C：</strong><br>
+<code>rootNamespace = "UnitIntention"</code><br>
+<code>namespace UnitIntention { ... }</code><br><br>
+理由：代码简洁 + 新文件自动带 ns + 模块内统一。如果以后担心和其他模块重名（比如谁再写一个 <code>UnitIntention</code>），再升级成全称也不迟。
+</p>
+
+</div>
+
+<!-- ============ 表格速查 ============ -->
+<div class="card">
+<h2>七、一句话速查</h2>
+
+<table>
+<tr><th>你问</th><th>答案</th></tr>
+<tr><td><code>name</code> 和命名空间必须一样吗？</td><td><strong>不用</strong>，两者没有强制关系</td></tr>
+<tr><td><code>rootNamespace</code> 不配会怎样？</td><td>新建文件没有默认 namespace，编译不影响</td></tr>
+<tr><td>代码只写 namespace 不设 rootNamespace 行吗？</td><td><strong>完全可以</strong>，你现在这样就行</td></tr>
+<tr><td>同一个 asmdf 内 namespace 不统一行吗？</td><td><strong>可以</strong>，但不推荐（自己容易搞混）</td></tr>
+<tr><td>改了 asmdf 需要重新导入吗？</td><td>Unity 会自动刷新</td></tr>
+</table>
+</div>
+
+</body>
+</html>

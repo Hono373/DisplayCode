@@ -1,21 +1,24 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = nameof(BattleIconInfo))]
-public class BattleIconInfo : ScriptableObject
+namespace GameModule.CardSandBox.UnitIntention
 {
-    static IAssetLoad assetLoad;
-    public List<Sprite> atkIcons;
-    public List<Sprite> shieldIcons;
-    public List<Sprite> healIcons;
-    public Sprite sleepIcons;
-    public Sprite debuffIcons;
-    public Sprite buffIcons;
-    public Sprite unknowIcons;
-
-    internal static BattleIconInfo Get()
+    [CreateAssetMenu(fileName = nameof(BattleIconInfo))]
+    public class BattleIconInfo : ScriptableObject
     {
-        return assetLoad.GetSo<BattleIconInfo>(nameof(BattleIconInfo), true);
+        static IAssetLoad assetLoad;
+        public List<Sprite> atkIcons;
+        public List<Sprite> shieldIcons;
+        public List<Sprite> healIcons;
+        public Sprite sleepIcons;
+        public Sprite debuffIcons;
+        public Sprite buffIcons;
+        public Sprite unknowIcons;
+
+        internal static BattleIconInfo Get()
+        {
+            return assetLoad.GetSo<BattleIconInfo>(nameof(BattleIconInfo), true);
+        }
     }
 }
 

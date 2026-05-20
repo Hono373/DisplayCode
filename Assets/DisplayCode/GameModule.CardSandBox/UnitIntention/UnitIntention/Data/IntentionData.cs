@@ -1,11 +1,14 @@
 using System;
 
-[Serializable]
-public class IntentionData
+namespace GameModule.CardSandBox.UnitIntention
 {
-    public int[] skillIndexs = new int[2];
-    IntentionData() { }
-    internal static IntentionData Create(int[] skillIndexs) => new() { skillIndexs = skillIndexs };
+    [Serializable]
+    public class IntentionData
+    {
+        public int[] skillIndexs = new int[2];
+        IntentionData() { }
+        internal static IntentionData Create(int[] skillIndexs) => new() { skillIndexs = skillIndexs };
 
-    public override string ToString() => $"IntentionData {{ skillIndexs = [{string.Join(", ", skillIndexs)}] }}";
+        public override string ToString() => $"IntentionData {{ skillIndexs = [{string.Join(", ", skillIndexs)}] }}";
+    }
 }

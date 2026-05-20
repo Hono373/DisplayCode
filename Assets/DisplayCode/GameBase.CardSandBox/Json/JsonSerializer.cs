@@ -5,7 +5,7 @@ using UnityEngine;
 
 public static class JsonSerializer
 {
-    static void Serialize(object obj, string fullName)
+    public static void Serialize(this object obj, string fullName)
     {
         string path = Path.Combine(Application.persistentDataPath, fullName);
         string jsonData = JsonConvert.SerializeObject(obj, new JsonSerializerSettings()
@@ -17,7 +17,7 @@ public static class JsonSerializer
         File.WriteAllText(path, jsonData);
         Debug.Log($"{fullName} Save Succeed");
     }
-    static T LoadInPersistantDataPath<T>(string fullName) where T : class
+    public static T LoadInPersistantDataPath<T>(string fullName) where T : class
     {
         string path = Path.Combine(Application.persistentDataPath, fullName);
         return LoadWithFullPath<T>(path);

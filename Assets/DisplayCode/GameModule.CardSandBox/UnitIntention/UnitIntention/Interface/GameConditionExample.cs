@@ -1,11 +1,15 @@
 using System;
 using UnityEngine;
-[Serializable]
-public class GameConditionExample : IGameCondition
+
+namespace GameModule.CardSandBox.UnitIntention
 {
-    [SerializeField] int index; 
-    public void Condition(out int? result)
+    [Serializable]
+    public class GameConditionExample : IGameCondition
     {
-        result = index;
+        [SerializeField] int index;
+        public void Condition(out int? result)
+        {
+            result = index;
+        }
     }
 }

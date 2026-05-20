@@ -1,5 +1,8 @@
-public interface ISkillEffectInfo
+namespace GameModule.CardSandBox.UnitIntention
 {
-    public IEffectInfo EffectInfo();
-    public IntentionUIData IntentionsData();
+    public interface ISkillEffectInfo
+    {
+        public IEffectInfo EffectInfo();
+        public IntentionUIData IntentionsData();
+    }
 }
