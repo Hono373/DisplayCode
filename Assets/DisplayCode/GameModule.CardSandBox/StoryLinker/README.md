@@ -1,28 +1,37 @@
 # StoryLinker — 剧情节点编辑器
 
-策划自制的对话树编辑工具，基于 Unity GraphView + Odin Inspector。
+基于 Unity GraphView + Odin Inspector 的对话树编辑器，输出为 `StoryInfo.asset`。
 
-## 用途
+## 入口
 
-零代码搭建剧情分支，输出为 `StoryInfo.asset`，程序直接读取即可使用。
+菜单 → 我的工具 → StoryLinker.Test
 
 ## 节点类型
 
-| 节点 | 说明 |
+| 节点 | 功能 |
 |------|------|
-| **开始** | 剧情入口，配置标题/描述/BGM |
-| **对白** | 对话内容，可配置角色和文本 |
-| **分支** | 玩家选择分支点 |
-| **结束** | 剧情终点 |
-| **备注** | 策划批注，不参与运行时逻辑 |
+| Start | 剧情入口，配置标题/背景/BGM |
+| Dialogue | 对白内容，配置说话人和文本 |
+| Option | 玩家选项分支 |
+| End | 剧情终点 |
+| Note | 策划备注，不参与运行时逻辑（不导出） |
 
-## 使用方式
+## 工具栏
 
-`菜单 → 我的工具 → StoryLinker.Test`
+新建、保存、加载、框选、复位视图、打开资源列表。
 
-工具栏支持：新建/保存/加载/框选/复位视图。
+## 输出
 
-## 设计意图
+保存为 `StoryInfo.asset`（ScriptableObject），运行时直接读取。
 
-- 减少策划对程序的依赖：配剧情只需要打开编辑器，拖拽连线
-- 数据以 `ScriptableObject` 输出，资产管理原生支持版本控制
+## 程序集
+
+| 程序集 | 平台 | 说明 |
+|--------|------|------|
+| GameModule.StoryLinker.Runtime | Runtime | 运行时数据结构 |
+| GameModule.StoryLinker.Editor | Editor | GraphView 编辑器窗口和节点 |
+
+## 依赖
+
+- Odin Inspector
+- GameBase.CardSandBox

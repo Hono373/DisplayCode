@@ -11,6 +11,7 @@ public class ModifierInfo : ScriptableObject
     public string modifierName;
 
     [SerializeReference] public List<IModifierEffectInfo> modifierEffects = new();
+    internal bool only;
     public static ModifierInfo Get(string key) => AssetLoad.GetSo<ModifierInfo>(key);
 
     public string GetDescription(Modifier buff)

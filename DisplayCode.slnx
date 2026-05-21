@@ -10,6 +10,7 @@
   <Project Path="GameBase.AnimProcessManager.csproj" />
   <Project Path="GameModule.StoryLinker.Editor.csproj" />
   <Project Path="GameModule.CardSandBox.UnitIntention.Test.csproj" />
-  <Project Path="GameGlue.CardSandBox.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
+  <Project Path="GameBase.ModifierManager.Test.csproj" />
 </Solution>

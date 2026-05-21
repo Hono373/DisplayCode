@@ -1,30 +1,34 @@
 # UnitIntention — 敌人意图决策系统
 
-决定敌方单位"下回合要做什么"的系统。意图会提前展示给玩家，支持可预测的反制玩法。
+决定敌方单位下回合行为的系统，意图提前展示给玩家。
 
 ## 决策流程
 
-```
-[条件判断] → [加权随机] → [选中行为] → [选中技能] → [展示意图]
-```
+条件判断 → 加权随机 → 选中行为 → 选中技能 → 展示意图
 
-- **条件盒** (ConditionBox)：检查战斗状态（血量、Buff 等），改变行为倾向
-- **加权随机** (WeightedRandomSelector)：前缀和 + 二分查找，O(log n)
-- 每个行为/技能可独立配置权重，通过 .asset 文件调优
+## 配置链
 
-## 策划配置方式
+| 配置项 | 类型 | 作用 |
+|--------|------|------|
+| UnitIntentionInfo | ScriptableObject | 行为树根，列出一组行为条 |
+| StatusInfo | ScriptableObject | 单个行为栏（如"猛攻"），含权重和技能列表 |
+| SkillInfo | ScriptableObject | 具体技能，含权重和目标选择规则 |
+| BattleIconInfo | ScriptableObject | 意图图标映射表，技能 → 图标 |
+| NullSkillInfo / NullEffectInfo | ScriptableObject | 无技能/无效果时的占位引用 |
 
-ScriptableObject 配置链：
+## 核心组件
 
-| 配置项 | 作用 | 可调参数 |
-|-------|------|---------|
-| `UnitIntentionInfo` | 敌人行为树根 | 行为列表 |
-| `StatusInfo` | 单个行为栏（如"攻击"） | 权重、包含的技能 |
-| `SkillInfo` | 具体技能 | 权重、效果指向 |
-| `BattleIconInfo` | 意图图标映射 | 技能 ➔ 图标 |
+| 组件 | 说明 |
+|------|------|
+| GameNode | 行为树节点基类，统一条件判断和加权随机的入口 |
+| ConditionBox | 条件盒，检查战斗状态（血量、Buff等），返回子节点索引 |
+| SelectorBox | 选择器盒，组合单位筛选条件 |
+| WeightedRandomSelector | 加权随机选择器，前缀和 + 二分查找，O(log n) |
+| UnitIntention (Controller) | 意图控制器，遍历行为树生成当前回合的意图数据 |
 
-## 设计意图
+## 程序集
 
-- 让玩家"看得见"敌人行动，策略决策有据可依
-- 加权随机比纯随机更可控，策划能调出"某敌人偏好防御"等个性
-- 条件分支支持动态难度：残血狂暴、低血量逃跑等
+| 程序集 | 说明 |
+|--------|------|
+| GameModule.CardSandBox.UnitIntention | 核心逻辑 |
+| GameModule.CardSandBox.UnitIntention.Test | 测试脚本 |

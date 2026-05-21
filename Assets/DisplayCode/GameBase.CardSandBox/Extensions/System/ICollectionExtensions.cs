@@ -4,7 +4,7 @@ using UnityEngine;
 /// <summary>
 /// 用于创建7位id
 /// </summary>
-public static class ICollectionExtension
+public static class ICollectionExtensions
 {
     public static string RandomID(this ICollection<string> keyHash)
     {

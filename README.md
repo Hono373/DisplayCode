@@ -1,21 +1,32 @@
-# DisplayCode — 卡牌游戏系统设计
+# DisplayCode
 
-回合制卡牌游戏的项目原型，展示三个核心系统：
+回合制卡牌游戏的项目原型。
 
-## 系统一览
+## 系统模块
 
-| 系统 | 一句话说明 |
-|------|-----------|
-| **敌人意图系统** (`UnitIntention`) | 加权随机 + 条件分支，决定敌人每回合的行为 |
-| **剧情编辑器** (`StoryLinker`) | 策划自制的对话树工具，搭剧情不需要程序介入 |
-| **动画队列** (`AnimProcessSystem`) | 管理卡牌特效播放的串/并行队列 |
+| 模块 | 说明 |
+|------|------|
+| **UnitIntention** | 敌人意图决策，加权随机 + 条件分支 |
+| **AnimProcessManager** | 动画播放队列，串/并行管理 |
+| **ModifierManager** | Buff/修饰符生命周期管理 |
+| **StoryLinker** | 剧情节点编辑器，GraphView 可视化 |
 
-## 设计原则
+## 架构
 
-- **数据驱动** — 所有数值通过 ScriptableObject 配置，改 .asset 即可调优
-- **策划友好** — StoryLinker 编辑器让策划独立完成剧情搭建
-- **模块解耦** — 三层架构（Base → Glue → Module），各系统可独立迭代
+```
+GameBase.CardSandBox   底层基础库（接口、扩展、资源加载）
+  ├─ AnimProcessManager  动画队列
+  └─ ModifierManager     Buff 系统
+    ↓
+GameGlue.CardSandBox   胶水层（Manager 入口、运行时整合）
+    ↓
+GameModule.CardSandBox 业务模块
+  ├─ StoryLinker         剧情编辑器
+  └─ UnitIntention       敌人意图
+```
 
-## 测试
+## 依赖
 
-每个模块附有测试场景和测试脚本，Scene/Inspector 内一键运行。
+- DOTween Pro — 动画引擎
+- Odin Inspector — 编辑器增强
+- YooAsset — 资源热更新
