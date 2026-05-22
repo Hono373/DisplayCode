@@ -1,11 +1,7 @@
-using CardSandBoxLibrary;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-
-namespace GameModule.CardSandBox.UnitIntention
-{
     /// <summary>
     /// 技能
     /// 决定技能的实现
@@ -43,4 +39,4 @@ namespace GameModule.CardSandBox.UnitIntention
         }
         public SelectorBox SelectMode() => selectorBox;
     }
-}
+

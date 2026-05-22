@@ -1,22 +1,19 @@
 using System;
 using UnityEngine;
 
-namespace GameModule.CardSandBox.UnitIntention
+[Serializable]
+[CreateAssetMenu(fileName = nameof(NullEffectInfo))]
+public class NullEffectInfo : ScriptableObject, ISkillEffectInfo
 {
-    [Serializable]
-    [CreateAssetMenu(fileName = nameof(NullEffectInfo))]
-    public class NullEffectInfo : ScriptableObject, ISkillEffectInfo
-    {
-        static IAssetLoad assetLoad;
-        public static NullEffectInfo Get() => assetLoad.Get<NullEffectInfo>(typeof(NullEffectInfo).Name, true);
-        [SerializeField] Sprite sprite;
-        [SerializeReference] IEffectInfo effectInfo;
-        public Sprite Sprite() => sprite;
-        public IEffectInfo EffectInfo() => effectInfo;
+    static IAssetLoad assetLoad;
+    public static NullEffectInfo Get() => assetLoad.Get<NullEffectInfo>(typeof(NullEffectInfo).Name, true);
+    [SerializeField] Sprite sprite;
+    [SerializeReference] IEffectInfo effectInfo;
+    public Sprite Sprite() => sprite;
+    public IEffectInfo EffectInfo() => effectInfo;
 
-        public IntentionUIData IntentionsData()
-        {
-            throw new NotImplementedException();
-        }
+    public IntentionUIData IntentionsData()
+    {
+        throw new NotImplementedException();
     }
 }

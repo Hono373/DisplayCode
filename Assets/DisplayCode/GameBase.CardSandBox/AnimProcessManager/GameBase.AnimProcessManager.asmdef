@@ -1,6 +1,6 @@
 {
     "name": "GameBase.AnimProcessManager",
-    "rootNamespace": "GameBase.AnimProcessManager",
+    "rootNamespace": "",
     "references": [
         "GameBase.CardSandBox"
     ],

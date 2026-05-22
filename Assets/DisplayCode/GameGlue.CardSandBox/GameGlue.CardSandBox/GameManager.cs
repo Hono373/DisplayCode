@@ -19,6 +19,8 @@ public class GameManager : MonoBehaviour
         instance = this;
 
         yield return AssetLoad.Create();
+
+        
     }
     private void Update()
     {

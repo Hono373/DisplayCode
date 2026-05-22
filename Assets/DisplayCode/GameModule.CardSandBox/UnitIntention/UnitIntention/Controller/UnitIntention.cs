@@ -2,51 +2,48 @@ using System;
 using Newtonsoft.Json;
 using UnityEngine;
 
-namespace GameModule.CardSandBox.UnitIntention
+[Serializable]
+public class UnitIntention
 {
-    [Serializable]
-    public class UnitIntention
+    [JsonProperty][SerializeReference] IntentionData intentionData;
+    public ISkillInfo GetSKill(UnitIntentionInfo info)
     {
-        [JsonProperty][SerializeReference] IntentionData intentionData;
-        public ISkillInfo GetSKill(UnitIntentionInfo info)
+        var index = GetSkillIndexs(info);
+        intentionData = IntentionData.Create(index);
+        return GetSKill(intentionData, info);
+    }
+    public ISkillInfo GetSKill(IntentionData intentionData, UnitIntentionInfo Info)
+    {
+        try
         {
-            var index = GetSkillIndexs(info);
-            intentionData = IntentionData.Create(index);
-            return GetSKill(intentionData, info);
+            return Info.StatusInfos()[intentionData.skillIndexs[0]].Deserialize(intentionData.skillIndexs[1]);
         }
-        public ISkillInfo GetSKill(IntentionData intentionData, UnitIntentionInfo Info)
+        catch (Exception e)
         {
-            try
-            {
-                return Info.StatusInfos()[intentionData.skillIndexs[0]].Deserialize(intentionData.skillIndexs[1]);
-            }
-            catch (Exception e)
-            {
-                Debug.Log(e.Message);
-                return NullSkillInfo.Get();
-            }
+            Debug.Log(e.Message);
+            return NullSkillInfo.Get();
         }
-        public int[] GetSkillIndexs(UnitIntentionInfo info)
+    }
+    public int[] GetSkillIndexs(UnitIntentionInfo info)
+    {
+        var indexs = new int[2];
+        try
         {
-            var indexs = new int[2];
-            try
+            GameNode node = info;
+            var i = 0;
+            while (!node.IsEnd())
             {
-                GameNode node = info;
-                var i = 0;
-                while (!node.IsEnd())
-                {
-                    var childIndex = node.GetChildIndex();
-                    indexs[i] = childIndex;
-                    node = node.Childs()[childIndex];
-                    i++;
-                }
-                return indexs;
+                var childIndex = node.GetChildIndex();
+                indexs[i] = childIndex;
+                node = node.Childs()[childIndex];
+                i++;
             }
-            catch (Exception e)
-            {
-                Debug.Log($"[{nameof(UnitIntentionInfo)}]{e.Message}");
-                return indexs;
-            }
+            return indexs;
+        }
+        catch (Exception e)
+        {
+            Debug.Log($"[{nameof(UnitIntentionInfo)}]{e.Message}");
+            return indexs;
         }
     }
 }

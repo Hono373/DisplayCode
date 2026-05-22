@@ -1,7 +1,4 @@
-namespace CardSandBoxLibrary
+public interface IWeight
 {
-    public interface IWeight
-    {
-        int Weight();
-    }
+    int Weight();
 }

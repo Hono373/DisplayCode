@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
@@ -19,7 +20,7 @@ public class ModifierManagerTest : MonoBehaviour
         var target = new UnitMock();
         var modifierModule = target.GetModifierModule();
         ModifierCreateInfo createInfo = new ModifierCreateInfo();
-        modifierModule.AddModifier(caster,target,createInfo);
+        modifierModule.AddModifier(caster,target,createInfo,SequenceExtensions.Create());
     }
 }
 

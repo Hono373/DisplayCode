@@ -1,38 +1,44 @@
+using DG.Tweening;
 using Newtonsoft.Json;
+using Sirenix.Utilities;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-
 [Serializable]
 public class ModifierModule
 {
     [JsonProperty] Dictionary<string, Modifier> modifiers = new();
-    [JsonIgnore] public IReadOnlyDictionary<string, Modifier> Modifiers => modifiers;
-    public event Action<Modifier> OnAdded;
-    public event Action<Modifier> OnRemoved;
-    public void AddModifier(IModifierOwnerAffected caster, IModifierOwnerAffected target, ModifierCreateInfo createInfo)
+    [SerializeField] ModifierUIModule uiModule = new();
+    public void RegisterUI(IModifierModuleUI ui) => uiModule.AddListener(ui);
+    public void UnregisterUI(IModifierModuleUI ui) => uiModule.RemoveListener(ui);
+    public void AddModifier(IModifierOwnerAffected caster, IModifierOwnerAffected target, ModifierCreateInfo createInfo, Sequence seq)
     {
         var id = modifiers.Keys.RandomID();
         var modifier = Modifier.Create(id, caster, target, createInfo);
         modifiers[id] = modifier;
         ModifierManager.Register(modifier);
-        OnAdded?.Invoke(modifier);
+
+        uiModule.OnValueChange(modifiers, seq);
     }
-    public bool RemoveBuff(string id)
+    public void RemoveModifier(Modifier modifier, Sequence seq)
     {
-        if (modifiers.TryGetValue(id, out var modifier))
+        var id = modifier.data.id;
+        if (modifiers.Remove(id))
         {
-            modifiers.Remove(id);
-            OnRemoved?.Invoke(modifier);
-            return true;
+            ModifierManager.Unregister(modifier);
+            uiModule.OnValueChange(modifiers, seq);
         }
-        return false;
+        else
+        {
+            Debug.Log($"!modifiers.Contains{modifier.GetInfo().name}");
+        }
     }
-    public void Deserialize()
+    public void Deserialize(Sequence seq)
     {
         foreach (var modifier in modifiers.Values)
         {
             ModifierManager.Register(modifier);
         }
+        uiModule.OnValueChange(modifiers, seq);
     }
 }

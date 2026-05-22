@@ -1,11 +1,7 @@
-using CardSandBoxLibrary;
 using Sirenix.OdinInspector;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-
-namespace GameModule.CardSandBox.UnitIntention
-{
     /// <summary>
     /// 行为栏
     /// 用于存放行为 比如 巡逻 待机 攻击 等
@@ -23,4 +19,4 @@ namespace GameModule.CardSandBox.UnitIntention
         public SkillInfo Deserialize(int index) => skillInfos[index];
         public int Weight() => weight;
     }
-}
+

@@ -1,9 +1,6 @@
-using CardSandBoxLibrary;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-namespace GameModule.CardSandBox.UnitIntention
-{
     [Serializable]
     public class UnitIntentionInfo : GameNode
     {
@@ -48,4 +45,4 @@ namespace GameModule.CardSandBox.UnitIntention
             }
         }
     }
-}
+

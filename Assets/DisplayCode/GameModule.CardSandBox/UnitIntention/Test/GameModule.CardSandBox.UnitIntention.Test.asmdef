@@ -1,6 +1,6 @@
 {
     "name": "GameModule.CardSandBox.UnitIntention.Test",
-    "rootNamespace": "GameModule.CardSandBox.UnitIntention",
+    "rootNamespace": "",
     "references": [
         "GUID:e6d10d328561cf340949d0c65b54e16c",
         "GUID:b61e00cde86dbb5489c57defa0e48187"

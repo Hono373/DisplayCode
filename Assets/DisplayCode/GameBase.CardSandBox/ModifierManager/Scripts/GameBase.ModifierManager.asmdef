@@ -1,6 +1,6 @@
 {
     "name": "GameBase.ModifierManager",
-    "rootNamespace": "GameBase.ModifierManager",
+    "rootNamespace": "",
     "references": [
         "GameBase.CardSandBox"
     ],

@@ -3,22 +3,19 @@ using System.Collections.Generic;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace GameModule.CardSandBox.UnitIntention
+/// <summary>
+/// 具体实现由胶水层决定
+/// </summary>
+[Serializable]
+public class SelectorBox
 {
-    /// <summary>
-    /// 具体实现由胶水层决定
-    /// </summary>
-    [Serializable]
-    public class SelectorBox
+    [InfoBox("通过设置条件，剔除不符合条件的单位")]
+    [SerializeReference] public List<IUnitSelector> selector = new();
+    public void Trim(List<string> targetList)
     {
-        [InfoBox("通过设置条件，剔除不符合条件的单位")]
-        [SerializeReference] public List<IUnitSelector> selector = new();
-        public void Trim(List<string> targetList)
+        foreach (var item in selector)
         {
-            foreach (var item in selector)
-            {
-                item.Trim(targetList);
-            }
+            item.Trim(targetList);
         }
     }
 }

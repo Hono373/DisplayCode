@@ -1,10 +1,6 @@
-using CardSandBoxLibrary;
 using Sirenix.OdinInspector;
 using System.Collections.Generic;
 using UnityEngine;
-
-namespace GameModule.CardSandBox.UnitIntention
-{
     /// <summary>
     /// 条件权重混合节点
     /// </summary>
@@ -29,4 +25,4 @@ namespace GameModule.CardSandBox.UnitIntention
             return result.Value;
         }
     }
-}
+

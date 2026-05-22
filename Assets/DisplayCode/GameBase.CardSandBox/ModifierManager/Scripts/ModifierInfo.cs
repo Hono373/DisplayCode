@@ -9,11 +9,9 @@ public class ModifierInfo : ScriptableObject
     [ShowInInspector] public string key => name.TrimPrefix($"{nameof(ModifierInfo)}_");
     public Sprite img;
     public string modifierName;
-
+    public bool only;
     [SerializeReference] public List<IModifierEffectInfo> modifierEffects = new();
-    internal bool only;
     public static ModifierInfo Get(string key) => AssetLoad.GetSo<ModifierInfo>(key);
-
     public string GetDescription(Modifier buff)
     {
         var description = string.Empty;

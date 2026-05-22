@@ -1,9 +1,5 @@
-using CardSandBoxLibrary;
 using System;
 using System.Collections.Generic;
-
-namespace GameModule.CardSandBox.UnitIntention
-{
     /// <summary>
     /// 行为模块管理器，对输出数据负责
     /// 封装了切换逻辑与行为栏
@@ -75,4 +71,4 @@ namespace GameModule.CardSandBox.UnitIntention
         /// <summary>总权重。</summary>
         public int TotalWeight => _totalWeight;
     }
-}
+
