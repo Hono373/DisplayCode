@@ -11,7 +11,7 @@ public class ModifierModule
     [SerializeField] ModifierUIModule uiModule = new();
     public void RegisterUI(IModifierModuleUI ui) => uiModule.AddListener(ui);
     public void UnregisterUI(IModifierModuleUI ui) => uiModule.RemoveListener(ui);
-    public void AddModifier(IModifierOwnerAffected caster, IModifierOwnerAffected target, ModifierCreateInfo createInfo, Sequence seq)
+    public void AddModifier(IModifierAffected caster, IModifierAffected target, ModifierCreateInfo createInfo, Sequence seq)
     {
         var id = modifiers.Keys.RandomID();
         var modifier = Modifier.Create(id, caster, target, createInfo);

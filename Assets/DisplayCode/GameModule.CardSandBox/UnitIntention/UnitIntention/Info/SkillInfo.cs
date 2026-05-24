@@ -18,7 +18,7 @@ using UnityEngine;
         public override IReadOnlyList<IWeight> Weights() => null;
         public override IReadOnlyList<GameNode> Childs() => null;
         public override ConditionBox ConditionBox() => null;
-        public int Weight() => 1;
+        public int Weight() => weight;
         public string Desc()
         {
             var result = new List<string>();

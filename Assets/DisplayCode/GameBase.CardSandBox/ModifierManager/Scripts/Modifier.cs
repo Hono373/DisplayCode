@@ -2,7 +2,7 @@ using DG.Tweening;
 using Newtonsoft.Json;
 using System;
 using UnityEngine;
-public interface IModifierOwnerAffected
+public interface IModifierAffected
 {
 
 }
@@ -12,7 +12,7 @@ public partial class Modifier
     [JsonProperty] public ModifierData data;
     [JsonIgnore] IModifierUnitObj obj;
     Modifier() { }
-    public static Modifier Create(string id, IModifierOwnerAffected owner, IModifierOwnerAffected target, ModifierCreateInfo createInfo)
+    public static Modifier Create(string id, IModifierAffected owner, IModifierAffected target, ModifierCreateInfo createInfo)
     {
         var modifier = new Modifier();
         modifier.data = new ModifierData()

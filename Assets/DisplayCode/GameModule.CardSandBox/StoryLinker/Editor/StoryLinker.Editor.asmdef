@@ -1,10 +1,12 @@
 {
-    "name": "GameBase.ModifierManager",
+    "name": "StoryLinker.Editor",
     "rootNamespace": "",
     "references": [
-        "GameBase.CardSandBox"
+        "StoryLinker.Runtime"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": false,

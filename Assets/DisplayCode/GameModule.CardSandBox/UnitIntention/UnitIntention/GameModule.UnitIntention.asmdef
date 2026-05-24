@@ -1,9 +1,8 @@
 {
-    "name": "GameBase.ModifierManager.Test",
+    "name": "GameModule.UnitIntention",
     "rootNamespace": "",
     "references": [
-        "GameBase.CardSandBox",
-        "GameBase.ModifierManager"
+        "GUID:b61e00cde86dbb5489c57defa0e48187"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

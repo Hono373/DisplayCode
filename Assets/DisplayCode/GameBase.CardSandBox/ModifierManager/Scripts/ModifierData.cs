@@ -6,8 +6,8 @@ public partial class Modifier
     [Serializable]
     public class ModifierData
     {
-        public IModifierOwnerAffected owner;
-        public IModifierOwnerAffected target;
+        public IModifierAffected owner;
+        public IModifierAffected target;
         public bool only;
         public string id = string.Empty;
         public string key = string.Empty;
